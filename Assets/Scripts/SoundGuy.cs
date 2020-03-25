@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class SoundGuy : MonoBehaviour
@@ -13,13 +14,13 @@ public class SoundGuy : MonoBehaviour
         Instance = this;
     }
     
-    public void PlaySound(string audioClipName, bool looping = false)
+    public void PlaySound(string audioClipName, bool looping = false, Action callback = null)
     {
         var audioClip = Resources.Load<AudioClip>("Sounds/" + audioClipName);
-        PlaySound(audioClip, looping);
+        PlaySound(audioClip, looping, callback);
     }
-    
-    public void PlaySound(AudioClip audioClip, bool looping = false)
+
+    public void PlaySound(AudioClip audioClip, bool looping = false, Action callback = null)
     {
         if (looping)
         {
@@ -27,17 +28,18 @@ public class SoundGuy : MonoBehaviour
         }
         else
         {
-            StartCoroutine(InstanceSound(audioClip));
+            StartCoroutine(InstanceSound(audioClip, callback));
         }
     }
 
-    private IEnumerator InstanceSound(AudioClip audioClip)
+    private IEnumerator InstanceSound(AudioClip audioClip, Action callback)
     {
         var newAudioObject = Instantiate(audioSource);
         newAudioObject.clip = audioClip;
         newAudioObject.Play();
 
         yield return new WaitForSeconds(audioClip.length);
+        callback?.Invoke();
         Destroy(newAudioObject.gameObject);
     }
     
