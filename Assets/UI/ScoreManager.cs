@@ -28,7 +28,11 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        scoreText.text = ZerosGenerator(score);
+        if (scoreText)
+        {
+            scoreText.text = ZerosGenerator(score);
+        }
+        
     }
 
     private string ZerosGenerator(int score)
