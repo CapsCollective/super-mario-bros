@@ -392,6 +392,9 @@ MonoBehaviour:
   bottomFlagPos: {x: 0, y: 0, z: 0}
   flagHeight: 0
   SM: {fileID: 0}
+  TM: {fileID: 0}
+  timerPoint: 0
+  rate: 50
 --- !u!61 &1183636749
 BoxCollider2D:
   m_ObjectHideFlags: 0

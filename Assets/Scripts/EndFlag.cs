@@ -14,11 +14,16 @@ public class EndFlag : MonoBehaviour
     public enum FlagPositions { bottom, low, mid, high, top};
 
     public ScoreManager SM;
+    public TimeManager TM;
+
+    [SerializeField] private float timerPoint = 0f;
+    public float rate = 5f;
 
     private void Awake()
     {
         myBC = gameObject.GetComponent<BoxCollider2D>();
         SM = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreManager>();
+        TM = SM.gameObject.GetComponent<TimeManager>();
         flagHeight = myBC.bounds.size.y;
         bottomFlagPos = gameObject.transform.position - flagHeight * 0.5f * Vector3.up;
     }
@@ -52,9 +57,25 @@ public class EndFlag : MonoBehaviour
         return 0;
     }
 
-    public void AddTimerToScore()
+    public IEnumerator AddTimerToScore()
     {
         // reduce timer to zero incrementally via while loop whilst adding points
+        TM.PauseTimer();
+        while (TM.IsTimeRemaining())
+        {
+            float timeAmount = Time.deltaTime * rate;
+            TM.DecreaseTimer(timeAmount);
+            timerPoint += timeAmount;
+            if (timerPoint > 1f)
+            {
+                SM.AddPoints(50* Mathf.FloorToInt(timerPoint));
+                timerPoint -= Mathf.Floor(timerPoint);
+            }
+            
+            yield return null;
+            
+        }
+
     }
 
     public void fireWorks()
@@ -68,5 +89,6 @@ public class EndFlag : MonoBehaviour
         {
              SM.AddPoints(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
         }
+        StartCoroutine("AddTimerToScore");
     }
 }
