@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Lives : MonoBehaviour
+public class LivesManager : MonoBehaviour
 {
     public int lives;
     private int defaultLives = 3;
 
+    public Text livesText;
+
     private void Awake()
     {
         lives = PlayerPrefs.GetInt("Lives", defaultLives);
+        UpdateLivesText();
     }
 
     public void AddLives()
     {
-
             lives++;
-        
     }
 
     public void LoseLives()
@@ -49,5 +51,13 @@ public class Lives : MonoBehaviour
         SetLives(defaultLives);
 
         // run the gameover from the gameManager
+    }
+
+    public void UpdateLivesText()
+    {
+        if (livesText)
+        {
+            livesText.text = lives.ToString();
+        }
     }
 }
