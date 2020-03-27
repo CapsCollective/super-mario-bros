@@ -18,15 +18,19 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        if (!pauseTimer)
+        if (!pauseTimer && IsTimeRemaining())
         {
-            DecreaseTimer();
+            DecreaseTimer(Time.deltaTime);
         }
     }
 
-    private void DecreaseTimer()
+    public void DecreaseTimer(float amount)
     {
-        timer -= Time.deltaTime;
+        timer -= amount;
+        if (timer < 0f)
+        {
+            timer = 0f;
+        }
         UpdateTimerText();
     }
 
@@ -49,6 +53,11 @@ public class TimeManager : MonoBehaviour
     public void UnpauseTimer()
     {
         pauseTimer = false;
+    }
+
+    public bool IsTimeRemaining()
+    {
+        return timer > 0;
     }
 
     private string ZerosGenerator(int score)
