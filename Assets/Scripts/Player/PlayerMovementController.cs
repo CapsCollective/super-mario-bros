@@ -53,9 +53,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         //Debug.Log($"{IsGrounded()} | {transform.position}");
 
-        if (!isGrounded)
+        if (!IsGrounded())
             gravity += gravityScale;
-        else if(!jump)
+        else if (!jump)
+            gravity = 0;
+        else
             gravity = 0;
 
         gravity = Mathf.Clamp(gravity, -0.5f, jumpMultiplier);
