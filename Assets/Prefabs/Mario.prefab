@@ -94,11 +94,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4247755445731195837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8da14ab37b0e3b498880f5eafddcee7, type: 3}
+  m_Script: {fileID: 11500000, guid: 68b9c3333133345448fa93cf1d268ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1
-  jumpMultiplier: 5
+  walkSpeed: 0.25
+  jumpMultiplier: 1
   jumpSpeed: 3.5
   groundOffset: -0.55
   groundDistance: 0.02
@@ -108,8 +108,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -118,11 +118,11 @@ MonoBehaviour:
       time: 0.5
       value: 1
       inSlope: 0
-      outSlope: -6.0665355
+      outSlope: -6.024253
       tangentMode: 1
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.031879187
+      outWeight: 0.023489952
     - serializedVersion: 3
       time: 1
       value: 0
