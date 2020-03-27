@@ -53,12 +53,10 @@ public class PlayerMovementController : MonoBehaviour
     {
         //Debug.Log($"{IsGrounded()} | {transform.position}");
 
-        if (isGrounded)
+        if (!isGrounded)
             gravity += gravityScale;
         else if(!jump)
             gravity = 0;
-
-
 
         gravity = Mathf.Clamp(gravity, -0.5f, jumpMultiplier);
 
@@ -83,6 +81,7 @@ public class PlayerMovementController : MonoBehaviour
     private bool IsGrounded()
     {
         RaycastHit2D groundRay = Physics2D.BoxCast(transform.position + new Vector3(0, groundOffset,0 ), new Vector2(1,0.05f),0 , Vector2.down, groundDistance);
+        Debug.DrawRay(transform.position + new Vector3(0, groundOffset, 0), Vector2.down);
         if (groundRay.collider != null)
         {
             Debug.Log(groundRay.collider.name);
