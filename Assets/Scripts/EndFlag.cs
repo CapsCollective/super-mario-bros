@@ -19,6 +19,9 @@ public class EndFlag : MonoBehaviour
     [SerializeField] private float timerPoint = 0f;
     public float rate = 5f;
 
+    public Firework[] fireWorks;
+    [SerializeField] private int fireworkCount = 0;
+
     private void Awake()
     {
         myBC = gameObject.GetComponent<BoxCollider2D>();
@@ -61,6 +64,7 @@ public class EndFlag : MonoBehaviour
     {
         // reduce timer to zero incrementally via while loop whilst adding points
         TM.PauseTimer();
+        fireworkCount = Mathf.FloorToInt(TM.GetTimer()) % 10;
         while (TM.IsTimeRemaining())
         {
             float timeAmount = Time.deltaTime * rate;
@@ -72,15 +76,33 @@ public class EndFlag : MonoBehaviour
                 timerPoint -= Mathf.Floor(timerPoint);
             }
             
-            yield return null;
+            yield return null;   
+        }
+        FireWorks();
+    }
+
+    public void FireWorks()
+    {
+        // fireworks points for 1, 3, 6 for 500 points each
+        
+        if(fireworkCount==1 || fireworkCount == 3 || fireworkCount == 6)
+        {
+
+            StartCoroutine("ShootFireworks",fireworkCount);
             
         }
 
     }
 
-    public void fireWorks()
+    public IEnumerator ShootFireworks(int count)
     {
-        // fireworks points for 1, 3, 6 for 500 points each
+        
+        for (int i = 0; i < count; i++)
+        {
+            // shoot firework, add 500 points at end of animation
+            yield return new WaitForSeconds(1.0f);
+            fireWorks[i].Explode();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
