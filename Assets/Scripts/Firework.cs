@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Firework : MonoBehaviour
 {
-    public ScoreManager SM;
-    public Animator myAnim;
-    public SpriteRenderer mySR;
+    private ScoreManager SM;
+    private Animator myAnim;
+    private SpriteRenderer mySR;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class Firework : MonoBehaviour
         // TODO: Play audio of fireworks here /////////////////////////////////////////
 
         // Seems to destroy the soundguy GO
-        //SoundGuy.Instance.PlaySound("smb_fireworks");
+        SoundGuy.Instance.PlaySound("smb_fireworks");
     }
 
     public void SpriteEnabled()
