@@ -663,6 +663,7 @@ MonoBehaviour:
   - {fileID: 1443589796}
   - {fileID: 773194174}
   - {fileID: 601166534}
+  fireworkCount: 0
 --- !u!61 &1183636749
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1261,17 +1262,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1675078429584342818, guid: e74f5d5eff791b74fb4a3fa5999a808d,
         type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1675078429584342818, guid: e74f5d5eff791b74fb4a3fa5999a808d,
         type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1675078429584342818, guid: e74f5d5eff791b74fb4a3fa5999a808d,
-        type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4724709039365525533, guid: e74f5d5eff791b74fb4a3fa5999a808d,
