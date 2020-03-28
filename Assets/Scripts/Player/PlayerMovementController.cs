@@ -21,12 +21,18 @@ public class PlayerMovementController : MonoBehaviour
     // The scale of the gravity when the player is falling
     [SerializeField] private float gravityScale = -.1f;
 
+    [SerializeField] private float accelrationTime = 0.25f;
+
     private Rigidbody2D playerRigidbody;
     // Timer used for the lerp for the jump
     private float currentJumpTimer = 0;
     // If the player currently wants to jump
     private bool jump = false;
     private float gravity = 0;
+    private float desiredXDir = 0;
+    private float acceleration = 0;
+    private float extraJump = 0;
+
 
     private bool isGrounded
     {
@@ -44,8 +50,15 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
+
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             jump = true;
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumpMultiplier = Mathf.SmoothDamp(jumpMultiplier, 2, ref extraJump, .25f);
+        }
     }
 
     // Update is called once per frame
@@ -56,9 +69,15 @@ public class PlayerMovementController : MonoBehaviour
         if (!IsGrounded())
             gravity += gravityScale;
         else if (!jump)
+        {
             gravity = 0;
+            jumpMultiplier = 0.5f;
+        }
         else
+        {
             gravity = 0;
+            jumpMultiplier = 0.5f;
+        }
 
         gravity = Mathf.Clamp(gravity, -0.5f, jumpMultiplier);
 
@@ -77,7 +96,7 @@ public class PlayerMovementController : MonoBehaviour
             gravity = Mathf.Lerp(0, jumpCurve.Evaluate(currentJumpTimer) * jumpMultiplier, currentJumpTimer);
         }
 
-        playerRigidbody.MovePosition(transform.position + new Vector3(Input.GetAxisRaw("Horizontal") * walkSpeed, gravity));
+        playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * walkSpeed, gravity));
     }
 
     private bool IsGrounded()
