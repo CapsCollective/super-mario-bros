@@ -8,15 +8,23 @@ public class GameController : MonoBehaviour
     public enum LevelState { Title, Loading, Main, GameOver};
     public LevelState state;
 
+    public Canvas LoadingCanvas;
+    public Canvas UICanvas;
+
     private void Awake()
     {
-        GetLevelState();
+        DontDestroyOnLoad(this);
+        state = GetLevelState();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (state == LevelState.Loading)
+        {
+            Invoke("loadMainScene", 2f);
+        }
+
     }
 
     // Update is called once per frame
@@ -48,9 +56,22 @@ public class GameController : MonoBehaviour
         return LevelState.Title;
     }
 
-    public void LoadScene(string name)
+    public void LoadLoadingScene()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneByName(name).buildIndex);
-        state = GetLevelState();
+        state = LevelState.Loading;
+        LoadingCanvas.enabled = true;
+        LoadScene();
+    }
+
+    private void loadMainScene()
+    {
+        state = LevelState.Main;
+        LoadingCanvas.enabled = false;
+        LoadScene();
+        
+    }
+    public void LoadScene()
+    {
+        SceneManager.LoadScene((int)state);
     }
 }

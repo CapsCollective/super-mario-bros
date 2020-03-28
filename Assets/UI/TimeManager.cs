@@ -37,6 +37,7 @@ public class TimeManager : MonoBehaviour
     public void ResetTimer()
     {
         timer = origTimer;
+        PauseTimer();
         UpdateTimerText();
     }
 

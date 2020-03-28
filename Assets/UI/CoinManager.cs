@@ -9,7 +9,7 @@ public class CoinManager : MonoBehaviour
     [SerializeField] private int coinCount;
 
     public Text coinText;
-    public LivesManager LM;
+    private LivesManager LM;
 
     private void Awake()
     {
