@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Ben\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Ben\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_super-mario-bros.1512917641.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Ben\Programming\super-mario-bros" t="IncludeRecursive">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_super-mario-bros.1713947368.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Brick.cs" t="Include" />
           <e p="DummyScript.cs" t="Include" />
           <e p="EndFlag.cs" t="Include" />
+          <e p="NPCBehaviour.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="PlayerMovementController.cs" t="Include" />
+          </e>
           <e p="SoundGuy.cs" t="Include" />
         </e>
         <e p="UI" t="Include">
@@ -124,7 +128,7 @@
         </e>
       </e>
       <e p="super-mario-bros.sln" t="IncludeFlat" />
-      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
       <e p="Unity.2D.Tilemap.Extras.csproj" t="IncludeRecursive" />
       <e p="Unity.2D.Tilemap.Extras.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.2D.Tilemap.Extras.Placeholder.EditorTests.csproj" t="IncludeRecursive" />

@@ -16,6 +16,8 @@ public class DummyScript : MonoBehaviour
         yield return new WaitForSeconds(3);
         SoundGuy.Instance.PlaySound("main_theme", true);
         SoundGuy.Instance.PlaySound("Player damage 2", false, OnSoundEnd);
+        yield return new WaitForSeconds(3);
+        SoundGuy.Instance.PlaySound("Player damage 2", false, OnSoundEnd);
     }
 
     private void OnSoundEnd()

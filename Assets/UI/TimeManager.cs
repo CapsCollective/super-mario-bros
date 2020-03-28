@@ -24,6 +24,12 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public float GetTimer()
+    {
+        return timer;
+    }
+
+
     public void DecreaseTimer(float amount)
     {
         timer -= amount;
