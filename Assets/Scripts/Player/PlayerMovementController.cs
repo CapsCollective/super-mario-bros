@@ -20,6 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private AnimationCurve jumpCurve;
     // The scale of the gravity when the player is falling
     [SerializeField] private float gravityScale = -.1f;
+    [SerializeField] private float maxGravityDownForce = 0.5f;
 
     [SerializeField] private float accelrationTime = 0.25f;
 
@@ -33,6 +34,7 @@ public class PlayerMovementController : MonoBehaviour
     private float acceleration = 0;
     private float extraJump = 0;
 
+    public float CurrentAcceleration { get { return desiredXDir; } }
 
     private bool isGrounded
     {
@@ -53,33 +55,27 @@ public class PlayerMovementController : MonoBehaviour
         desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
-            jump = true;
-
-        if (Input.GetKey(KeyCode.Space))
         {
-            jumpMultiplier = Mathf.SmoothDamp(jumpMultiplier, 2, ref extraJump, .25f);
+            jump = true;
         }
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //Debug.Log($"{IsGrounded()} | {transform.position}");
+        if (Input.GetKey(KeyCode.Space) && currentJumpTimer > 0)
+        {
+            currentJumpTimer -= Time.deltaTime * jumpSpeed * 0.5f;
+        }
 
         if (!IsGrounded())
             gravity += gravityScale;
         else if (!jump)
         {
             gravity = 0;
-            jumpMultiplier = 0.5f;
         }
         else
         {
             gravity = 0;
-            jumpMultiplier = 0.5f;
         }
 
-        gravity = Mathf.Clamp(gravity, -0.5f, jumpMultiplier);
+        gravity = Mathf.Clamp(gravity, -maxGravityDownForce, jumpMultiplier);
 
         if (jump)
         {
@@ -93,9 +89,15 @@ public class PlayerMovementController : MonoBehaviour
                 jump = false;
             }
 
-            gravity = Mathf.Lerp(0, jumpCurve.Evaluate(currentJumpTimer) * jumpMultiplier, currentJumpTimer);
+            gravity = jumpCurve.Evaluate(currentJumpTimer) * jumpMultiplier;
         }
 
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        //Debug.Log($"{IsGrounded()} | {transform.position}");
         playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * walkSpeed, gravity));
     }
 
@@ -105,7 +107,7 @@ public class PlayerMovementController : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0, groundOffset, 0), Vector2.down);
         if (groundRay.collider != null)
         {
-            Debug.Log(groundRay.collider.name);
+            //Debug.Log(groundRay.collider.name);
             return true;
         }
 

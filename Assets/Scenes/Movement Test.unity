@@ -128,11 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4247755445731195832, guid: ae26b301192f2c247ae8a69cb5d9952e,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195833, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -190,8 +185,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
       propertyPath: jumpCurve.m_Curve.Array.data[1].time
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
@@ -210,23 +215,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
-      propertyPath: jumpMultiplier
+      propertyPath: jumpCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: maxGravityDownForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: lowJumpMultiplier
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4247755445731195836, guid: ae26b301192f2c247ae8a69cb5d9952e,
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
-      propertyPath: m_Interpolate
-      value: 0
+      propertyPath: highJumpMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195835, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195837, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
       propertyPath: m_Name
       value: Mario
-      objectReference: {fileID: 0}
-    - target: {fileID: 4247755445731195837, guid: ae26b301192f2c247ae8a69cb5d9952e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae26b301192f2c247ae8a69cb5d9952e, type: 3}
@@ -264,13 +289,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c28899ea73bc66499fb6bd5e38082bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 5
-  cameraSpeed: 15
+  minSpeed: 7.5
+  slowCamBound: 0.35
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -364,13 +390,13 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1000, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1000, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &842551628
 SpriteRenderer:
@@ -416,8 +442,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 1000, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -431,8 +457,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842551626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 1}
+  m_LocalPosition: {x: 488.4, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
