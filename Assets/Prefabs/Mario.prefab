@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4247755445731195832}
   m_Layer: 0
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 0.25
-  jumpMultiplier: 1
-  jumpSpeed: 3.5
+  jumpMultiplier: 0.25
+  jumpSpeed: 5
   groundOffset: -0.55
   groundDistance: 0.02
   jumpCurve:
@@ -107,7 +107,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -115,17 +115,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: -6.024253
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.023489952
-    - serializedVersion: 3
       time: 1
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -135,7 +126,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gravityScale: -0.1
+  gravityScale: -0.01
+  maxGravityDownForce: 1
+  accelrationTime: 0.1
 --- !u!50 &4247755445731195836
 Rigidbody2D:
   serializedVersion: 4
