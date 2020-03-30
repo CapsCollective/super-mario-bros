@@ -12,8 +12,9 @@ public class NPCBehaviour : MonoBehaviour
     public float rayDistanceExcess;
 
     public bool avoidsFalling;
-    public bool stompable;
+    public bool hostile;
 
+    public Collider2D triggerCollider;
     public GameObject deathObject;
 
     public LayerMask raycastLayer;
@@ -52,12 +53,24 @@ public class NPCBehaviour : MonoBehaviour
         rb2d.velocity = new Vector2(horizontalSpeed, rb2d.velocity.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (stompable && squashLayer == (squashLayer | (1 << collision.gameObject.layer)))
+        // IF !hostile OR top of this collider IS LESS THAN OR EQUAL TO bottom of other collider
+
+        Vector3 feet = other.transform.position - other.transform.up * other.bounds.extents.y;
+        Vector3 head = transform.position + transform.up * triggerCollider.bounds.extents.y;
+
+        bool hitHead = Vector3.Dot(transform.up, (feet - head).normalized) >= 0;
+
+        if (!hostile || hitHead)
         {
             Die();
         }
+
+        //if (!hostile || squashLayer == (squashLayer | (1 << collision.gameObject.layer)))
+        //{
+        //    Die();
+        //}
     }
 
     public void Die()

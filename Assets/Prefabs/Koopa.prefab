@@ -146,7 +146,8 @@ MonoBehaviour:
   rayOffsetExcess: -0.03
   rayDistanceExcess: 0.03
   avoidsFalling: 1
-  stompable: 0
+  hostile: 1
+  triggerCollider: {fileID: 4218243302181375204}
   deathObject: {fileID: 0}
   raycastLayer:
     serializedVersion: 2
