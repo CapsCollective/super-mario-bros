@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public enum LevelState { Title, Loading, Main, GameOver};
+    public enum LevelState { Title, Loading, Main, GameOver };
     public LevelState state;
 
     public Canvas LoadingCanvas;
@@ -29,20 +29,24 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (state == LevelState.Title)
+        {
+            SetUpTitle();
+        }
     }
 
     private LevelState GetLevelState()
     {
         string levelName = SceneManager.GetActiveScene().name;
-        if(levelName == "TitleScene")
+        if (levelName == "TitleScene")
         {
             return LevelState.Title;
         }
-        else if(levelName == "LoadingScene")
+        else if (levelName == "LoadingScene")
         {
             return LevelState.Loading;
         }
-        else if(levelName == "MainScene")
+        else if (levelName == "MainScene")
         {
             return LevelState.Main;
         }
@@ -62,7 +66,6 @@ public class GameController : MonoBehaviour
         TM.ToggleTimerText(false);
         ShowUICanvas();
         Invoke("loadMainScene", 2f);
-
     }
 
     public void ShowLoadingCanvas()
@@ -74,12 +77,10 @@ public class GameController : MonoBehaviour
     private void loadMainScene()
     {
         state = LevelState.Main;
-        LoadingCanvas.enabled = false;
         LoadScene();
+        LoadingCanvas.enabled = false;
         TM.ToggleTimerText(true);
         ShowUICanvas();
-
-
     }
 
     public void ShowUICanvas()
@@ -91,7 +92,23 @@ public class GameController : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadSceneAsync((int)state);
+        SceneManager.LoadScene((int)state);
     }
 
+    public void SetUpTitle()
+    {
+        ResetAllStats();
+        ShowUICanvas();
+        TM.ToggleTimerText(false);
+        LoadingCanvas.enabled = false;
+
+    }
+
+    public void ResetAllStats()
+    {
+        TM.ResetTimer();
+        SM.ResetScore();
+        CM.ResetCoinCount();
+        LM.ResetLives();
+    }
 }

@@ -45,6 +45,11 @@ public class LivesManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void ResetLives()
+    {
+        SetLives(defaultLives);
+    }
+
     public void LevelComplete()
     {
         SetLives(lives);
