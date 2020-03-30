@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public enum LevelState { Title, Loading, Main, GameOver};
+    public enum LevelState { Title, Loading, Main, GameOver };
     public LevelState state;
 
     public Canvas LoadingCanvas;
@@ -29,20 +29,24 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (state == LevelState.Title)
+        {
+            SetUpTitle();
+        }
     }
 
     private LevelState GetLevelState()
     {
         string levelName = SceneManager.GetActiveScene().name;
-        if(levelName == "TitleScene")
+        if (levelName == "TitleScene")
         {
             return LevelState.Title;
         }
-        else if(levelName == "LoadingScene")
+        else if (levelName == "LoadingScene")
         {
             return LevelState.Loading;
         }
-        else if(levelName == "MainScene")
+        else if (levelName == "MainScene")
         {
             return LevelState.Main;
         }
@@ -61,8 +65,8 @@ public class GameController : MonoBehaviour
         ShowLoadingCanvas();
         TM.ToggleTimerText(false);
         ShowUICanvas();
-        Invoke("loadMainScene", 2f);
-
+        //Invoke("LoadMainScene", 2f);
+        Invoke("LoadGameOverScene", 2f);
     }
 
     public void ShowLoadingCanvas()
@@ -71,15 +75,32 @@ public class GameController : MonoBehaviour
         LoadingCanvas.enabled = true;
     }
 
-    private void loadMainScene()
+    private void LoadMainScene()
     {
         state = LevelState.Main;
-        LoadingCanvas.enabled = false;
         LoadScene();
+        LoadingCanvas.enabled = false;
         TM.ToggleTimerText(true);
         ShowUICanvas();
+    }
 
+    private void LoadGameOverScene()
+    {
+        state = LevelState.GameOver;
+        LoadScene();
+        LoadingCanvas.enabled = false;
+        ShowUICanvas();
+        //TODO: Play GameOver Audio
+        //SoundGuy.Instance.PlaySound("smb_gameover");
+        Invoke("LoadTitleScene", 2f);
+    }
 
+    public void LoadTitleScene()
+    {
+        state = LevelState.Title;
+        LoadScene();
+        SetUpTitle();
+        Destroy(gameObject);
     }
 
     public void ShowUICanvas()
@@ -91,7 +112,31 @@ public class GameController : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadSceneAsync((int)state);
+        SceneManager.LoadScene((int)state);
     }
 
+    public void SetUpTitle()
+    {
+        ResetAllStats();
+        ShowUICanvas();
+        TM.ToggleTimerText(false);
+        LoadingCanvas.enabled = false;
+
+    }
+
+    public void ResetAllStats()
+    {
+        TM.ResetTimer();
+        SM.ResetScore();
+        CM.ResetCoinCount();
+        LM.ResetLives();
+    }
+
+    public void GameOver()
+    {
+        SM.SaveHighScore();
+        LoadGameOverScene();
+    }
+
+    
 }

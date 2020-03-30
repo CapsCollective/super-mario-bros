@@ -10,10 +10,12 @@ public class TimeManager : MonoBehaviour
     private bool pauseTimer = false;
 
     public Text timerText;
+    public GameController GC;
 
     private void Awake()
     {
         ResetTimer();
+        GC = gameObject.GetComponent<GameController>();
     }
 
     void Update()
@@ -55,7 +57,6 @@ public class TimeManager : MonoBehaviour
     public void ToggleTimerText(bool show)
     {
         timerText.enabled = show;
-        print(show);
     }
 
     public void PauseTimer()
@@ -85,5 +86,12 @@ public class TimeManager : MonoBehaviour
             }
         }
         return zeros + score.ToString();
+    }
+
+    private void GameOver()
+    {
+        timer = 0;
+        PauseTimer();
+        GC.GameOver();
     }
 }
