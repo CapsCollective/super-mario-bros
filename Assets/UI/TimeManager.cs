@@ -52,6 +52,12 @@ public class TimeManager : MonoBehaviour
         timerText.text = ZerosGenerator(Mathf.FloorToInt(timer));
     }
 
+    public void ToggleTimerText(bool show)
+    {
+        timerText.enabled = show;
+        print(show);
+    }
+
     public void PauseTimer()
     {
         pauseTimer = true;

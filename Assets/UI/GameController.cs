@@ -11,26 +11,24 @@ public class GameController : MonoBehaviour
     public Canvas LoadingCanvas;
     public Canvas UICanvas;
 
+    private LivesManager LM;
+    private ScoreManager SM;
+    private TimeManager TM;
+    private CoinManager CM;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
         state = GetLevelState();
+        LM = gameObject.GetComponent<LivesManager>();
+        SM = gameObject.GetComponent<ScoreManager>();
+        TM = gameObject.GetComponent<TimeManager>();
+        CM = gameObject.GetComponent<CoinManager>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (state == LevelState.Loading)
-        {
-            Invoke("loadMainScene", 2f);
-        }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private LevelState GetLevelState()
@@ -59,8 +57,18 @@ public class GameController : MonoBehaviour
     public void LoadLoadingScene()
     {
         state = LevelState.Loading;
-        LoadingCanvas.enabled = true;
         LoadScene();
+        ShowLoadingCanvas();
+        TM.ToggleTimerText(false);
+        ShowUICanvas();
+        Invoke("loadMainScene", 2f);
+
+    }
+
+    public void ShowLoadingCanvas()
+    {
+        LM.UpdateLivesText();
+        LoadingCanvas.enabled = true;
     }
 
     private void loadMainScene()
@@ -68,10 +76,22 @@ public class GameController : MonoBehaviour
         state = LevelState.Main;
         LoadingCanvas.enabled = false;
         LoadScene();
-        
+        TM.ToggleTimerText(true);
+        ShowUICanvas();
+
+
     }
+
+    public void ShowUICanvas()
+    {
+        SM.UpdateScoreText();
+        CM.UpdateCoinText();
+        UICanvas.enabled = true;
+    }
+
     public void LoadScene()
     {
-        SceneManager.LoadScene((int)state);
+        SceneManager.LoadSceneAsync((int)state);
     }
+
 }

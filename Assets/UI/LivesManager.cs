@@ -12,7 +12,6 @@ public class LivesManager : MonoBehaviour
 
     private void Awake()
     {
-        lives = PlayerPrefs.GetInt("Lives", defaultLives);
         UpdateLivesText();
     }
 
@@ -35,6 +34,11 @@ public class LivesManager : MonoBehaviour
         }
     }
 
+    public int GetLives()
+    {
+        return PlayerPrefs.GetInt("Lives", defaultLives);
+    }
+
     public void SetLives(int l)
     {
         PlayerPrefs.SetInt("Lives", l);
@@ -55,6 +59,8 @@ public class LivesManager : MonoBehaviour
 
     public void UpdateLivesText()
     {
+        lives = GetLives();
+
         if (livesText)
         {
             livesText.text = lives.ToString();
