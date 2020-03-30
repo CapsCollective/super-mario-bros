@@ -6,7 +6,7 @@ public class DummyScript : MonoBehaviour
     void Start()
     {
         SoundGuy.Instance.PlaySound("main_theme", true);
-        StartCoroutine(PlayStarSound());
+        // StartCoroutine(PlayStarSound());
     }
     
     private IEnumerator PlayStarSound()
@@ -23,5 +23,10 @@ public class DummyScript : MonoBehaviour
     private void OnSoundEnd()
     {
         print("I got called!");
+    }
+
+    public void PlayDeathSound()
+    {
+        SoundGuy.Instance.PlaySound("Player damage 2", false, OnSoundEnd);
     }
 }
