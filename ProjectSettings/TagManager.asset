@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Green Mushroom
+  - Enemy
   - LoadCanvas
   - UI
   - Flagpole
@@ -17,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
-  - Enemy
+  - NPC
   - Player
-  - EnemyHead
-  - 
+  - NPCHitbox
+  - PlayerHitbox
   - 
   - 
   - 

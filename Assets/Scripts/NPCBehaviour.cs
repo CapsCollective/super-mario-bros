@@ -12,8 +12,12 @@ public class NPCBehaviour : MonoBehaviour
     public float rayDistanceExcess;
 
     public bool avoidsFalling;
-    public bool stompable;
+    public bool hostile;
 
+    public PlayerMovementController.Power powerOnContact;
+    public int livesOnContact;
+
+    public Collider2D triggerCollider;
     public GameObject deathObject;
 
     public LayerMask raycastLayer;
@@ -52,18 +56,43 @@ public class NPCBehaviour : MonoBehaviour
         rb2d.velocity = new Vector2(horizontalSpeed, rb2d.velocity.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (stompable && squashLayer == (squashLayer | (1 << collision.gameObject.layer)))
+        Vector3 feet = other.transform.position - other.transform.up * other.bounds.extents.y;
+        Vector3 head = transform.position + transform.up * triggerCollider.bounds.extents.y;
+
+        bool hitHead = Vector3.Dot(transform.up, (feet - head).normalized) >= 0;
+        
+        PlayerMovementController player;
+        if (player = other.GetComponent<PlayerMovementController>())
         {
-            Die();
+            if (!hostile || hitHead)
+            {
+                Kill();
+                player.AddLives(livesOnContact);
+                player.PowerUp(powerOnContact);
+            }
+            else
+            {
+                player.Die();
+            }
         }
     }
 
-    public void Die()
+    public void Kill()
     {
+        StartCoroutine(Die());
+    }
+
+    private IEnumerator Die()
+    {
+        // Start animation, etc...
+        yield return null;
+
+        // When it's done:
         if (deathObject) Instantiate(deathObject, transform.position, transform.rotation);
         Destroy(gameObject);
+
     }
 
     private bool ForwardCast()
@@ -73,7 +102,26 @@ public class NPCBehaviour : MonoBehaviour
         Vector3 direction = transform.right * Mathf.Sign(horizontalSpeed);
         float distance = XOffset + rayDistanceExcess;
 
-        bool hit = Physics2D.Raycast(origin1, direction, distance, raycastLayer) || Physics2D.Raycast(origin2, direction, distance, raycastLayer);
+        //bool hit = Physics2D.Raycast(origin1, direction, distance, raycastLayer) || Physics2D.Raycast(origin2, direction, distance, raycastLayer);
+
+        //RaycastHit2D[] hits1 = Physics2D.RaycastAll(origin1, direction, distance, raycastLayer);
+        //RaycastHit2D[] hits2 = Physics2D.RaycastAll(origin2, direction, distance, raycastLayer);
+
+        List<RaycastHit2D> hitList = new List<RaycastHit2D>();
+        hitList.AddRange(Physics2D.RaycastAll(origin1, direction, distance, raycastLayer));
+        hitList.AddRange(Physics2D.RaycastAll(origin2, direction, distance, raycastLayer));
+        RaycastHit2D[] hits = hitList.ToArray();
+
+        bool hit = false;
+        
+        foreach (RaycastHit2D rcHit in hits)
+        {
+            if (rcHit.collider != triggerCollider && rcHit.normal == (new Vector2(-horizontalSpeed, 0f)).normalized)
+            {
+                hit = true;
+                break;
+            }
+        }
 
         if (debug)
         {
@@ -90,7 +138,19 @@ public class NPCBehaviour : MonoBehaviour
         Vector3 direction = -transform.up;
         float distance = YOffset + rayDistanceExcess;
 
-        bool hit = Physics2D.Raycast(origin, direction, distance, raycastLayer);
+        //bool hit = Physics2D.Raycast(origin, direction, distance, raycastLayer);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, distance, raycastLayer);
+
+        bool hit = false;
+        foreach (RaycastHit2D rcHit in hits)
+        {
+            if (rcHit.collider != triggerCollider && rcHit.normal == Vector2.up)
+            {
+                hit = true;
+                break;
+            }
+        }
 
         if (debug)
         {

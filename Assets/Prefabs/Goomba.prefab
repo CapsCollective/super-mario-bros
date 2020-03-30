@@ -117,7 +117,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.025}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -128,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.95}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6968267757677193800
 MonoBehaviour:
@@ -146,10 +146,14 @@ MonoBehaviour:
   rayOffsetExcess: -0.03
   rayDistanceExcess: 0.03
   avoidsFalling: 0
+  hostile: 1
+  powerOnContact: 0
+  livesOnContact: 0
+  triggerCollider: {fileID: 6968267757907010027}
   deathObject: {fileID: 0}
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1025
   squashLayer:
     serializedVersion: 2
     m_Bits: 512
