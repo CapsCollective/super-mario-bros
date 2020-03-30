@@ -8,13 +8,27 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Brick.cs" t="Include" />
+          <e p="CallOnCollision.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
           <e p="DummyScript.cs" t="Include" />
           <e p="EndFlag.cs" t="Include" />
+          <e p="EnterCastle.cs" t="Include" />
+          <e p="Firework.cs" t="Include" />
+          <e p="LevelCompleteManager.cs" t="Include" />
+          <e p="LowerFlag.cs" t="Include" />
+          <e p="LowerPlayer.cs" t="Include" />
+          <e p="Mariotransform.cs" t="Include" />
+          <e p="NPCBehaviour.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="PlayerMovementController.cs" t="Include" />
+          </e>
           <e p="SoundGuy.cs" t="Include" />
           <e p="Teleporter.cs" t="Include" />
+          <e p="TitleScreenController.cs" t="Include" />
         </e>
         <e p="UI" t="Include">
           <e p="CoinManager.cs" t="Include" />
+          <e p="GameController.cs" t="Include" />
           <e p="LivesManager.cs" t="Include" />
           <e p="ScoreManager.cs" t="Include" />
           <e p="TestScore.cs" t="Include" />

@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Green Mushroom
+  - Enemy
+  - LoadCanvas
+  - UI
+  - Flagpole
+  - Fireworks
   layers:
   - Default
   - TransparentFX
@@ -13,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - NPC
+  - Player
+  - NPCHitbox
+  - PlayerHitbox
   - 
   - 
   - 

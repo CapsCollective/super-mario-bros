@@ -16,6 +16,7 @@ public enum Direction
 public class Teleporter : MonoBehaviour
 {
     public bool autoTrigger;
+    public bool staticScreen;
     public Vector3 spawnPoint;
     public Vector3 cameraPos;
     public Direction enterDir;
@@ -40,6 +41,7 @@ public class Teleporter : MonoBehaviour
     {
         //TODO: Disable input
         player.GetComponent<Rigidbody2D>().simulated = false;
+
         switch (enterDir)
         {
             case Direction.Down:
@@ -73,6 +75,7 @@ public class Teleporter : MonoBehaviour
         }
         //TODO: Enable Input
         player.GetComponent<Rigidbody2D>().simulated = true;
+        _camera.GetComponent<CameraController>().enabled = !staticScreen;
     }
     
 

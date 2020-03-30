@@ -13,17 +13,14 @@ public class EndFlag : MonoBehaviour
     private int[] flagPoints = {100, 400, 800, 2000, 5000};
     public enum FlagPositions { bottom, low, mid, high, top};
 
-    public ScoreManager SM;
-    public TimeManager TM;
+    public LevelCompleteManager LCM;
 
-    [SerializeField] private float timerPoint = 0f;
-    public float rate = 5f;
+    
 
     private void Awake()
     {
+        LCM = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelCompleteManager>();
         myBC = gameObject.GetComponent<BoxCollider2D>();
-        SM = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreManager>();
-        TM = SM.gameObject.GetComponent<TimeManager>();
         flagHeight = myBC.bounds.size.y;
         bottomFlagPos = gameObject.transform.position - flagHeight * 0.5f * Vector3.up;
     }
@@ -57,38 +54,16 @@ public class EndFlag : MonoBehaviour
         return 0;
     }
 
-    public IEnumerator AddTimerToScore()
-    {
-        // reduce timer to zero incrementally via while loop whilst adding points
-        TM.PauseTimer();
-        while (TM.IsTimeRemaining())
-        {
-            float timeAmount = Time.deltaTime * rate;
-            TM.DecreaseTimer(timeAmount);
-            timerPoint += timeAmount;
-            if (timerPoint > 1f)
-            {
-                SM.AddPoints(50* Mathf.FloorToInt(timerPoint));
-                timerPoint -= Mathf.Floor(timerPoint);
-            }
-            
-            yield return null;
-            
-        }
+    
 
-    }
-
-    public void fireWorks()
-    {
-        // fireworks points for 1, 3, 6 for 500 points each
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.CompareTag("Player"))
         {
-             SM.AddPoints(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
+            //LCM.AddFlagPoints(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
+            LCM.Begin(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
         }
-        StartCoroutine("AddTimerToScore");
     }
 }

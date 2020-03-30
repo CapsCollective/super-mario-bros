@@ -35,6 +35,28 @@ public class ScoreManager : MonoBehaviour
         
     }
 
+    public void SaveScore()
+    {
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.Save();
+    }
+
+    public void SaveHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", score);
+    }
+
+
+    public int GetScore()
+    {
+        return PlayerPrefs.GetInt("Score", 0);
+    }
+
+    public int GetHighScore()
+    {
+        return PlayerPrefs.GetInt("HighScore", 0);
+    }
+
     private string ZerosGenerator(int score)
     {
         // depending on the size of the number, place zeros in front of the number before displaying it
