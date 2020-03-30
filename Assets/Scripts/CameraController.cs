@@ -13,10 +13,12 @@ public class CameraController : MonoBehaviour
     private Transform playerTransform;
     private PlayerMovementController playerRb;
     private Camera cam;
+    private Vector3 startPos;
 
     void Start()
     {
         cam = GetComponent<Camera>();
+        startPos = transform.position;
         // Under the assumption that only one player exists
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerRb = playerTransform.GetComponent<PlayerMovementController>();
@@ -31,13 +33,13 @@ public class CameraController : MonoBehaviour
             if (relativeScreenPos.x >= 0.5f)
             {
                 //cameraSpeed = maxSpeed;
-                transform.position = new Vector3(playerTransform.position.x, 0, -10);
+                transform.position = new Vector3(playerTransform.position.x + 0.5f, startPos.y, startPos.z);
             }
-            else if (relativeScreenPos.x > slowCamBound)
-            {
-                //cameraSpeed = minSpeed;
-                transform.position += new Vector3(minSpeed, 0, 0) * Time.deltaTime;
-            }
+            //else if (relativeScreenPos.x > slowCamBound)
+            //{
+            //    //cameraSpeed = minSpeed;
+            //    transform.position += new Vector3(minSpeed, 0, 0) * Time.deltaTime;
+            //}
             else
                 cameraSpeed = 0;
 

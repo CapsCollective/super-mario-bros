@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+    [Space]
+
     // The default walk speed
     [SerializeField] private float walkSpeed = 5;
     // How high the jump will go
@@ -24,6 +27,7 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private float accelrationTime = 0.25f;
 
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerRigidbody;
     // Timer used for the lerp for the jump
     private float currentJumpTimer = 0;
@@ -48,11 +52,20 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+
         desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
+        animator.SetFloat("speed", Mathf.Abs(desiredXDir));
+        animator.SetBool("isJumping", !isGrounded);
+
+        spriteRenderer.flipX = Mathf.Sign(desiredXDir) < 0 ? true : false;
+
+        if (IsColliding())
+            desiredXDir = 0;
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
@@ -97,8 +110,19 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Debug.Log($"{IsGrounded()} | {transform.position}");
         playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * walkSpeed, gravity));
+        //Debug.Log($"{IsGrounded()} | {transform.position}");'
+    }
+    
+    private bool IsColliding()
+    {
+        RaycastHit2D collisionCheck = Physics2D.BoxCast(transform.position + new Vector3(Mathf.Sign(desiredXDir) * 0.55f, 0, 0), new Vector2(0.05f, .9f), 0, Vector3.right * Mathf.Sign(desiredXDir), .05f);
+        if (collisionCheck.collider != null)
+        {
+            Debug.Log(collisionCheck.collider.name);
+            return true;
+        }
+        return false;
     }
 
     private bool IsGrounded()
