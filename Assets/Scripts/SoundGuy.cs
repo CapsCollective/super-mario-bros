@@ -11,7 +11,10 @@ public class SoundGuy : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance)
+            return;
         Instance = this;
+        _currentLoop = audioSource;
     }
     
     public void PlaySound(string audioClipName, bool looping = false, Action callback = null)
@@ -43,10 +46,10 @@ public class SoundGuy : MonoBehaviour
         Destroy(newAudioObject.gameObject);
     }
     
-    private void InstanceLoopingSound(AudioClip audioClip)
+    private static void InstanceLoopingSound(AudioClip audioClip)
     {
-        audioSource.loop = true;
-        audioSource.clip = audioClip;
-        audioSource.Play();
+        _currentLoop.loop = true;
+        _currentLoop.clip = audioClip;
+        _currentLoop.Play();
     }
 }

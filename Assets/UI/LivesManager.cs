@@ -9,11 +9,12 @@ public class LivesManager : MonoBehaviour
     private int defaultLives = 3;
 
     public Text livesText;
+    public GameController GC;
 
     private void Awake()
     {
-        lives = PlayerPrefs.GetInt("Lives", defaultLives);
         UpdateLivesText();
+        GC = gameObject.GetComponent<GameController>();
     }
 
     public void AddLives()
@@ -35,10 +36,20 @@ public class LivesManager : MonoBehaviour
         }
     }
 
+    public int GetLives()
+    {
+        return PlayerPrefs.GetInt("Lives", defaultLives);
+    }
+
     public void SetLives(int l)
     {
         PlayerPrefs.SetInt("Lives", l);
         PlayerPrefs.Save();
+    }
+
+    public void ResetLives()
+    {
+        SetLives(defaultLives);
     }
 
     public void LevelComplete()
@@ -49,12 +60,14 @@ public class LivesManager : MonoBehaviour
     private void GameOver()
     {
         SetLives(defaultLives);
-
+        GC.GameOver();
         // run the gameover from the gameManager
     }
 
     public void UpdateLivesText()
     {
+        lives = GetLives();
+
         if (livesText)
         {
             livesText.text = lives.ToString();

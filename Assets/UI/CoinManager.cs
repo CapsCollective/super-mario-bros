@@ -9,7 +9,7 @@ public class CoinManager : MonoBehaviour
     [SerializeField] private int coinCount;
 
     public Text coinText;
-    public LivesManager LM;
+    private LivesManager LM;
 
     private void Awake()
     {
@@ -26,14 +26,25 @@ public class CoinManager : MonoBehaviour
     public void ResetCoinCount()
     {
         coinCount = 0;
+        SaveCoins();
         UpdateCoinText();
+    }
+
+    public void SaveCoins()
+    {
+        PlayerPrefs.SetInt("Coins", coinCount);
+        PlayerPrefs.Save();
+    }
+
+    public void GetCoins()
+    {
+        PlayerPrefs.GetInt("Coins", 0);
     }
 
     private void CheckFor1UP()
     {
         if(coinCount>= 100)
         {
-            // increment lives counter here
             if (LM)
             {
                 LM.AddLives();

@@ -10,10 +10,12 @@ public class TimeManager : MonoBehaviour
     private bool pauseTimer = false;
 
     public Text timerText;
+    public GameController GC;
 
     private void Awake()
     {
         ResetTimer();
+        GC = gameObject.GetComponent<GameController>();
     }
 
     void Update()
@@ -23,6 +25,12 @@ public class TimeManager : MonoBehaviour
             DecreaseTimer(Time.deltaTime);
         }
     }
+
+    public float GetTimer()
+    {
+        return timer;
+    }
+
 
     public void DecreaseTimer(float amount)
     {
@@ -37,12 +45,18 @@ public class TimeManager : MonoBehaviour
     public void ResetTimer()
     {
         timer = origTimer;
+        PauseTimer();
         UpdateTimerText();
     }
 
     public void UpdateTimerText()
     {
         timerText.text = ZerosGenerator(Mathf.FloorToInt(timer));
+    }
+
+    public void ToggleTimerText(bool show)
+    {
+        timerText.enabled = show;
     }
 
     public void PauseTimer()
@@ -72,5 +86,12 @@ public class TimeManager : MonoBehaviour
             }
         }
         return zeros + score.ToString();
+    }
+
+    private void GameOver()
+    {
+        timer = 0;
+        PauseTimer();
+        GC.GameOver();
     }
 }
