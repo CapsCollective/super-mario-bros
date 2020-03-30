@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LoadCanvas
   - UI
+  - Flagpole
+  - Fireworks
   layers:
   - Default
   - TransparentFX
