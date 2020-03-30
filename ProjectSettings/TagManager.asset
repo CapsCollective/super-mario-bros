@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Green Mushroom
   - Enemy
+  - LoadCanvas
+  - UI
+  - Flagpole
+  - Fireworks
   layers:
   - Default
   - TransparentFX

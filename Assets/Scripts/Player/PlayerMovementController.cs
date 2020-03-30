@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+    [Space]
+
     // The default walk speed
     [SerializeField] private float walkSpeed = 5;
     // How high the jump will go
@@ -20,13 +23,22 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private AnimationCurve jumpCurve;
     // The scale of the gravity when the player is falling
     [SerializeField] private float gravityScale = -.1f;
+    [SerializeField] private float maxGravityDownForce = 0.5f;
 
+    [SerializeField] private float accelrationTime = 0.25f;
+
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerRigidbody;
     // Timer used for the lerp for the jump
     private float currentJumpTimer = 0;
     // If the player currently wants to jump
     private bool jump = false;
     private float gravity = 0;
+    private float desiredXDir = 0;
+    private float acceleration = 0;
+    private float extraJump = 0;
+
+    public float CurrentAcceleration { get { return desiredXDir; } }
 
     // Different powers, used as an argument for PowerUp() so other entities can power-up Mario
     public enum Power { None, Flower, Mushroom, Star }
@@ -43,27 +55,43 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+
+        desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
+        animator.SetFloat("speed", Mathf.Abs(desiredXDir));
+        animator.SetBool("isJumping", !isGrounded);
+
+        spriteRenderer.flipX = Mathf.Sign(desiredXDir) < 0 ? true : false;
+
+        if (IsColliding())
+            desiredXDir = 0;
+
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
             jump = true;
-    }
+        }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        //Debug.Log($"{IsGrounded()} | {transform.position}");
+        if (Input.GetKey(KeyCode.Space) && currentJumpTimer > 0)
+        {
+            currentJumpTimer -= Time.deltaTime * jumpSpeed * 0.5f;
+        }
 
-        if (isGrounded)
+        if (!IsGrounded())
             gravity += gravityScale;
-        else if(!jump)
+        else if (!jump)
+        {
             gravity = 0;
+        }
+        else
+        {
+            gravity = 0;
+        }
 
-
-
-        gravity = Mathf.Clamp(gravity, -0.5f, jumpMultiplier);
+        gravity = Mathf.Clamp(gravity, -maxGravityDownForce, jumpMultiplier);
 
         if (jump)
         {
@@ -77,15 +105,33 @@ public class PlayerMovementController : MonoBehaviour
                 jump = false;
             }
 
-            gravity = Mathf.Lerp(0, jumpCurve.Evaluate(currentJumpTimer) * jumpMultiplier, currentJumpTimer);
+            gravity = jumpCurve.Evaluate(currentJumpTimer) * jumpMultiplier;
         }
 
-        playerRigidbody.MovePosition(transform.position + new Vector3(Input.GetAxisRaw("Horizontal") * walkSpeed, gravity));
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * walkSpeed, gravity));
+        //Debug.Log($"{IsGrounded()} | {transform.position}");'
+    }
+    
+    private bool IsColliding()
+    {
+        RaycastHit2D collisionCheck = Physics2D.BoxCast(transform.position + new Vector3(Mathf.Sign(desiredXDir) * 0.55f, 0, 0), new Vector2(0.05f, .9f), 0, Vector3.right * Mathf.Sign(desiredXDir), .05f);
+        if (collisionCheck.collider != null)
+        {
+            Debug.Log(collisionCheck.collider.name);
+            return true;
+        }
+        return false;
     }
 
     private bool IsGrounded()
     {
         RaycastHit2D groundRay = Physics2D.BoxCast(transform.position + new Vector3(0, groundOffset,0 ), new Vector2(1,0.05f),0 , Vector2.down, groundDistance);
+        Debug.DrawRay(transform.position + new Vector3(0, groundOffset, 0), Vector2.down);
         if (groundRay.collider != null)
         {
             //Debug.Log(groundRay.collider.name);
