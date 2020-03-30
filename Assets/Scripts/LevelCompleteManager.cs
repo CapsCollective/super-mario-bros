@@ -12,15 +12,17 @@ public class LevelCompleteManager : MonoBehaviour
 
     private LowerFlag flag;
     private LowerPlayer lowPlayer;
+    private PlayerMovementController PMC;
 
     private void Awake()
     {
         
     }
 
-    public void Begin()
+    public void Begin(int flagpoints)
     {
         FindObjects();
+        GC.SM.AddPoints(flagpoints);
         StopPlayer();
         GC.TM.PauseTimer();
         fireworkCount = Mathf.FloorToInt(GC.TM.GetTimer()) % 10;
@@ -32,6 +34,9 @@ public class LevelCompleteManager : MonoBehaviour
 
     private void FindObjects()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PMC = player.GetComponent<PlayerMovementController>();
+        lowPlayer = player.GetComponent<LowerPlayer>();
         flag = GameObject.FindGameObjectWithTag("Flagpole").GetComponentInChildren<LowerFlag>();
         lowPlayer = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<LowerPlayer>();
         GC = gameObject.GetComponent<GameController>();
@@ -41,6 +46,7 @@ public class LevelCompleteManager : MonoBehaviour
     private void StopPlayer()
     {
         // TODO: Stop Mario controls and remove gravity
+        PMC.enabled = false;
     }
 
     private void LowerPlayer()

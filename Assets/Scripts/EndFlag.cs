@@ -62,8 +62,8 @@ public class EndFlag : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            LCM.AddFlagPoints(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
-            LCM.Begin();
+            //LCM.AddFlagPoints(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
+            LCM.Begin(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
         }
     }
 }
