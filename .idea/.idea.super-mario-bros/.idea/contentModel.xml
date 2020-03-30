@@ -8,8 +8,10 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Brick.cs" t="Include" />
+          <e p="CallOnCollision.cs" t="Include" />
           <e p="DummyScript.cs" t="Include" />
           <e p="EndFlag.cs" t="Include" />
+          <e p="Firework.cs" t="Include" />
           <e p="NPCBehaviour.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="PlayerMovementController.cs" t="Include" />
