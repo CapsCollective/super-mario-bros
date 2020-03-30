@@ -9,10 +9,12 @@ public class LivesManager : MonoBehaviour
     private int defaultLives = 3;
 
     public Text livesText;
+    public GameController GC;
 
     private void Awake()
     {
         UpdateLivesText();
+        GC = gameObject.GetComponent<GameController>();
     }
 
     public void AddLives()
@@ -58,7 +60,7 @@ public class LivesManager : MonoBehaviour
     private void GameOver()
     {
         SetLives(defaultLives);
-
+        GC.GameOver();
         // run the gameover from the gameManager
     }
 

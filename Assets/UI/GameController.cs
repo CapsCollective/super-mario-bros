@@ -65,7 +65,8 @@ public class GameController : MonoBehaviour
         ShowLoadingCanvas();
         TM.ToggleTimerText(false);
         ShowUICanvas();
-        Invoke("loadMainScene", 2f);
+        //Invoke("LoadMainScene", 2f);
+        Invoke("LoadGameOverScene", 2f);
     }
 
     public void ShowLoadingCanvas()
@@ -74,13 +75,32 @@ public class GameController : MonoBehaviour
         LoadingCanvas.enabled = true;
     }
 
-    private void loadMainScene()
+    private void LoadMainScene()
     {
         state = LevelState.Main;
         LoadScene();
         LoadingCanvas.enabled = false;
         TM.ToggleTimerText(true);
         ShowUICanvas();
+    }
+
+    private void LoadGameOverScene()
+    {
+        state = LevelState.GameOver;
+        LoadScene();
+        LoadingCanvas.enabled = false;
+        ShowUICanvas();
+        //TODO: Play GameOver Audio
+        //SoundGuy.Instance.PlaySound("smb_gameover");
+        Invoke("LoadTitleScene", 2f);
+    }
+
+    public void LoadTitleScene()
+    {
+        state = LevelState.Title;
+        LoadScene();
+        SetUpTitle();
+        Destroy(gameObject);
     }
 
     public void ShowUICanvas()
@@ -111,4 +131,12 @@ public class GameController : MonoBehaviour
         CM.ResetCoinCount();
         LM.ResetLives();
     }
+
+    public void GameOver()
+    {
+        SM.SaveHighScore();
+        LoadGameOverScene();
+    }
+
+    
 }
