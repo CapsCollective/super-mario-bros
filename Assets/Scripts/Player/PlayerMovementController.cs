@@ -5,6 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
 {
+    // false = No input given to mario
+    // true = Mario reads input
+    public static bool InputEnabled = true;
+
+    // 1 = Right
+    // -1 = Left
+    public static float AutoMoveDir = 1;
+
     [SerializeField] private Animator animator;
     [Space]
 
@@ -29,6 +37,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerRigidbody;
+    private Camera mainCam;
     // Timer used for the lerp for the jump
     private float currentJumpTimer = 0;
     // If the player currently wants to jump
@@ -36,7 +45,6 @@ public class PlayerMovementController : MonoBehaviour
     private float gravity = 0;
     private float desiredXDir = 0;
     private float acceleration = 0;
-    private float extraJump = 0;
 
     public float CurrentAcceleration { get { return desiredXDir; } }
 
@@ -56,12 +64,17 @@ public class PlayerMovementController : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        mainCam = Camera.main;
     }
 
     void Update()
     {
 
-        desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
+        if (InputEnabled)
+            desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
+        else
+            desiredXDir = AutoMoveDir;
+
         animator.SetFloat("speed", Mathf.Abs(desiredXDir));
         animator.SetBool("isJumping", !isGrounded);
 
@@ -70,26 +83,16 @@ public class PlayerMovementController : MonoBehaviour
         if (IsColliding())
             desiredXDir = 0;
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
-        {
-            jump = true;
-        }
-
-        if (Input.GetKey(KeyCode.Space) && currentJumpTimer > 0)
-        {
-            currentJumpTimer -= Time.deltaTime * jumpSpeed * 0.5f;
-        }
-
         if (!IsGrounded())
+        {
             gravity += gravityScale;
+        }
         else if (!jump)
         {
             gravity = 0;
         }
         else
-        {
             gravity = 0;
-        }
 
         gravity = Mathf.Clamp(gravity, -maxGravityDownForce, jumpMultiplier);
 
@@ -108,6 +111,29 @@ public class PlayerMovementController : MonoBehaviour
             gravity = jumpCurve.Evaluate(currentJumpTimer) * jumpMultiplier;
         }
 
+        if (IsHeadJumping() && !isGrounded)
+        {
+            jump = false;
+            gravity = -.1f;
+        }
+
+        if (InputEnabled)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+            {
+                jump = true;
+            }
+
+            if (Input.GetKey(KeyCode.Space) && currentJumpTimer > 0)
+            {
+                currentJumpTimer -= Time.deltaTime * jumpSpeed * 0.5f;
+            }
+        }
+
+        if (mainCam.WorldToViewportPoint(transform.position + new Vector3(-0.5f, 0, 0)).x <= 0 && desiredXDir < 0)
+        {
+            desiredXDir = 0f;
+        }
     }
 
     // Update is called once per frame
@@ -116,10 +142,21 @@ public class PlayerMovementController : MonoBehaviour
         playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * walkSpeed, gravity));
         //Debug.Log($"{IsGrounded()} | {transform.position}");'
     }
+
+    private bool IsHeadJumping()
+    {
+        RaycastHit2D headRay = Physics2D.BoxCast(transform.position + new Vector3(0, -groundOffset, 0), new Vector2(.25f, 0.05f), 0, Vector2.up, groundDistance);
+        if (headRay.collider != null)
+        {
+            Debug.Log(headRay.collider.name);
+            return true;
+        }
+        return false;
+    }
     
     private bool IsColliding()
     {
-        RaycastHit2D collisionCheck = Physics2D.BoxCast(transform.position + new Vector3(Mathf.Sign(desiredXDir) * 0.55f, 0, 0), new Vector2(0.05f, .9f), 0, Vector3.right * Mathf.Sign(desiredXDir), .05f);
+        RaycastHit2D collisionCheck = Physics2D.BoxCast(transform.position + new Vector3(Mathf.Sign(desiredXDir) * 0.55f, 0, 0), new Vector2(0.05f, .9f), 0, Vector3.right * Mathf.Sign(desiredXDir), .1f);
         if (collisionCheck.collider != null)
         {
             Debug.Log(collisionCheck.collider.name);
