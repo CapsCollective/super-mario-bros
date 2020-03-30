@@ -28,6 +28,9 @@ public class PlayerMovementController : MonoBehaviour
     private bool jump = false;
     private float gravity = 0;
 
+    // Different powers, used as an argument for PowerUp() so other entities can power-up Mario
+    public enum Power { None, Flower, Mushroom, Star }
+
     private bool isGrounded
     {
         get
@@ -85,10 +88,41 @@ public class PlayerMovementController : MonoBehaviour
         RaycastHit2D groundRay = Physics2D.BoxCast(transform.position + new Vector3(0, groundOffset,0 ), new Vector2(1,0.05f),0 , Vector2.down, groundDistance);
         if (groundRay.collider != null)
         {
-            Debug.Log(groundRay.collider.name);
+            //Debug.Log(groundRay.collider.name);
             return true;
         }
 
         return false;
+    }
+
+    public void PowerUp(Power power)
+    {
+        switch (power)
+        {
+            case Power.Flower:
+                Debug.Log("Player received Flower Power!");
+                break;
+            case Power.Mushroom:
+                Debug.Log("Player received Mushroom Power!");
+                break;
+            case Power.Star:
+                Debug.Log("Player received Star Power!");
+                break;
+            default:
+                Debug.Log("Player didn't recieve a Power!");
+                break;
+        }
+    }
+
+    public void AddLives(int numLives)
+    {
+        // Increase lives by numLives
+        Debug.Log("Recieved " + numLives + " lives (not functional yet)!");
+    }
+
+    public void Die()
+    {
+        // Decrement player lives and respawn etc...
+        Debug.Log("Player has died (not functional yet)!");
     }
 }

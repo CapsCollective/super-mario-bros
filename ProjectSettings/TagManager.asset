@@ -15,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Enemy
+  - NPC
   - Player
-  - EnemyHead
-  - 
+  - NPCHitbox
+  - PlayerHitbox
   - 
   - 
   - 
