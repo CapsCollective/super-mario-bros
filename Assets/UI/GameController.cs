@@ -65,8 +65,8 @@ public class GameController : MonoBehaviour
         ShowLoadingCanvas();
         TM.ToggleTimerText(false);
         ShowUICanvas();
-        //Invoke("LoadMainScene", 2f);
-        Invoke("LoadGameOverScene", 2f);
+        Invoke("LoadMainScene", 2f);
+        //Invoke("LoadGameOverScene", 2f);
     }
 
     public void ShowLoadingCanvas()
