@@ -11,10 +11,10 @@ public class GameController : MonoBehaviour
     public Canvas LoadingCanvas;
     public Canvas UICanvas;
 
-    private LivesManager LM;
-    private ScoreManager SM;
-    private TimeManager TM;
-    private CoinManager CM;
+    public LivesManager LM;
+    public ScoreManager SM;
+    public TimeManager TM;
+    public CoinManager CM;
 
     private void Awake()
     {
