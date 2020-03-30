@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4247755445731195833}
   - component: {fileID: 4247755445731195834}
   - component: {fileID: 4247755445731195835}
+  - component: {fileID: 3416834574285891957}
   - component: {fileID: 4247755445731195836}
   - component: {fileID: 4247755445731195832}
   - component: {fileID: 2428316749852858194}
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2428316749852858194}
-  walkSpeed: 0.25
+  walkSpeed: 0.15
   jumpMultiplier: 0.25
   jumpSpeed: 5
   groundOffset: -0.55
@@ -131,6 +132,22 @@ MonoBehaviour:
   gravityScale: -0.01
   maxGravityDownForce: 1
   accelrationTime: 0.1
+--- !u!114 &3416834574285891957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247755445731195837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b52c145528224b428cc27d5299c2917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  endTrans: {fileID: 0}
+  timeTaken: 1
 --- !u!50 &4247755445731195836
 Rigidbody2D:
   serializedVersion: 4
@@ -150,7 +167,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4247755445731195832
 BoxCollider2D:
@@ -177,7 +194,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.01
 --- !u!95 &2428316749852858194
 Animator:
   serializedVersion: 3

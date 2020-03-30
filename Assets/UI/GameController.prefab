@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1908854318109763212}
   - component: {fileID: 1908854318109763211}
   - component: {fileID: 1908854318109763208}
+  - component: {fileID: 2248594983376936862}
   - component: {fileID: 1629539750278976693}
   m_Layer: 0
   m_Name: GameController
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 9035775017522224832}
+  GC: {fileID: 0}
 --- !u!114 &1908854318109763212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 0
   livesText: {fileID: 6450341536878581793}
+  GC: {fileID: 0}
 --- !u!114 &1908854318109763208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +95,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinCount: 0
   coinText: {fileID: 7254590116059154224}
+--- !u!114 &2248594983376936862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908854318109763215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bcfc3ce0ecedb46abf9dba12496693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeDecreaseRate: 5
+  timerPoint: 0
+  fireWorks: []
 --- !u!114 &1629539750278976693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +125,10 @@ MonoBehaviour:
   state: 0
   LoadingCanvas: {fileID: 4863547970728809029}
   UICanvas: {fileID: 9103893784265002324}
+  LM: {fileID: 0}
+  SM: {fileID: 0}
+  TM: {fileID: 0}
+  CM: {fileID: 0}
 --- !u!1001 &3041135692399684288
 PrefabInstance:
   m_ObjectHideFlags: 0

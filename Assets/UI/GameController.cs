@@ -65,8 +65,8 @@ public class GameController : MonoBehaviour
         ShowLoadingCanvas();
         TM.ToggleTimerText(false);
         ShowUICanvas();
-        //Invoke("LoadMainScene", 2f);
-        Invoke("LoadGameOverScene", 2f);
+        Invoke("LoadMainScene", 2f);
+        //Invoke("LoadGameOverScene", 2f);
     }
 
     public void ShowLoadingCanvas()
@@ -79,9 +79,11 @@ public class GameController : MonoBehaviour
     {
         state = LevelState.Main;
         LoadScene();
+        TM.UnpauseTimer();
         LoadingCanvas.enabled = false;
         TM.ToggleTimerText(true);
         ShowUICanvas();
+        SoundGuy.Instance.PlaySound("main_theme", true);
     }
 
     private void LoadGameOverScene()
@@ -91,7 +93,7 @@ public class GameController : MonoBehaviour
         LoadingCanvas.enabled = false;
         ShowUICanvas();
         //TODO: Play GameOver Audio
-        //SoundGuy.Instance.PlaySound("smb_gameover");
+        SoundGuy.Instance.PlaySound("smb_gameover");
         Invoke("LoadTitleScene", 2f);
     }
 
