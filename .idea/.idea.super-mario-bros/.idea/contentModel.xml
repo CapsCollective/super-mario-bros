@@ -11,6 +11,7 @@
           <e p="DummyScript.cs" t="Include" />
           <e p="EndFlag.cs" t="Include" />
           <e p="SoundGuy.cs" t="Include" />
+          <e p="Teleporter.cs" t="Include" />
         </e>
         <e p="UI" t="Include">
           <e p="CoinManager.cs" t="Include" />
