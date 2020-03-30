@@ -31,9 +31,8 @@ public class Teleporter : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Player") || !(Input.GetButtonDown("Down") || autoTrigger)) return;
-        Debug.Log("YO");
         //Only trigger on player over and key down
-        //SoundGuy.Instance.PlaySound("smb_pipe");
+        SoundGuy.Instance.PlaySound("smb_pipe");
         StartCoroutine(Teleport(other));
     }
 
