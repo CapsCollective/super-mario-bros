@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4247755445731195835}
   - component: {fileID: 4247755445731195836}
   - component: {fileID: 4247755445731195832}
+  - component: {fileID: 2428316749852858194}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -97,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b9c3333133345448fa93cf1d268ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2428316749852858194}
   walkSpeed: 0.25
   jumpMultiplier: 0.25
   jumpSpeed: 5
@@ -176,3 +178,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2428316749852858194
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247755445731195837}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 538eaa5446719564b8693433e6973c44, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
