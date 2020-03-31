@@ -101,6 +101,8 @@ MonoBehaviour:
   emptySprite: {fileID: 6332883617560258337, guid: f18faef82bd1ab24db8ecc87eefe6111,
     type: 3}
   multiCoinBrick: 0
+  brickBrokenPrefab: {fileID: 715226338678771077, guid: 1174806ef78f44539a756890f86a7c71,
+    type: 3}
   spawn: {fileID: 0}
 --- !u!1 &8551863912958538336
 GameObject:
