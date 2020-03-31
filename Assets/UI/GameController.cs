@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
         ShowUICanvas();
         //TODO: Play GameOver Audio
         SoundGuy.Instance.PlaySound("smb_gameover");
-        Invoke("LoadTitleScene", 2f);
+        Invoke("LoadTitleScene", 4f);
     }
 
     public void LoadTitleScene()
@@ -143,6 +143,26 @@ public class GameController : MonoBehaviour
     {
         LoadGameOverScene();
     }
+
+    public void MarioDie()
+    {
+        LM.LoseLives();
+        TM.PauseTimer();
+
+        SoundGuy.Instance.PlaySound("", true);
+        SoundGuy.Instance.PlaySound("smb_mariodie", false);
+        if (LM.CheckLives())
+        {
+            Invoke("LoadLoadingScene", 3f);
+        }
+        else
+        {
+            Invoke("GameOver", 3f);
+        }
+        
+    }
+
+
 
     
 }

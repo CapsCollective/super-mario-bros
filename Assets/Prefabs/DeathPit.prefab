@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3515396591198169895}
   - component: {fileID: 3515396591198169888}
-  - component: {fileID: 3515396591198169889}
+  - component: {fileID: 1923577226166029900}
   m_Layer: 0
   m_Name: DeathPit
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 250, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3515396591198169889
+--- !u!114 &1923577226166029900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,21 +67,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3515396591198169894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10c60e9f1a9149b8b76e1e2d63ff37b, type: 3}
+  m_Script: {fileID: 11500000, guid: 28754117aa0590040999fd8e8b2802f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  callback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1629539750278976693, guid: 31f437452d84bb44f9f25cc8945daa89,
-          type: 3}
-        m_MethodName: GameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
