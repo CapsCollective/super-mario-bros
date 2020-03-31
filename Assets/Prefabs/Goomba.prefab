@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6968267757677193803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6968267757907010026}
@@ -109,7 +109,7 @@ MonoBehaviour:
   bumpVertical: 450
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 257
   squashLayer:
     serializedVersion: 2
     m_Bits: 512

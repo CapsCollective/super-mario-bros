@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4218243301721611858}
   - component: {fileID: 4218243301721611864}
   - component: {fileID: 4218243302340019185}
+  - component: {fileID: 535011204}
   m_Layer: 8
   m_Name: Koopa
   m_TagString: Enemy
@@ -108,7 +109,7 @@ MonoBehaviour:
   bumpVertical: 450
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 257
   squashLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -164,6 +165,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &535011204
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218243301721611865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a374d504639ddb54095a15cc3450f088, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4218243302181375206
 GameObject:
   m_ObjectHideFlags: 0
