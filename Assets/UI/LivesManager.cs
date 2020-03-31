@@ -13,6 +13,7 @@ public class LivesManager : MonoBehaviour
 
     private void Awake()
     {
+        lives = defaultLives;
         UpdateLivesText();
         GC = gameObject.GetComponent<GameController>();
     }
@@ -29,12 +30,9 @@ public class LivesManager : MonoBehaviour
         CheckLives();
     }
 
-    public void CheckLives()
+    public bool CheckLives()
     {
-        if(lives < 1)
-        {
-            GameOver();
-        }
+        return lives > 0;
     }
 
     public int GetLives()
@@ -67,7 +65,6 @@ public class LivesManager : MonoBehaviour
 
     public void UpdateLivesText()
     {
-        lives = GetLives();
 
         if (livesText)
         {
