@@ -86,7 +86,7 @@ public class NPCBehaviour : MonoBehaviour
                 Kill(true);
 
                 // player.Bounce(); <- REQUIRES FUNCTION IN PLAYER CONTROLLER TO CALL!
-
+                if (hostile && hitHead) player.Bounce();
                 player.AddLives(livesOnContact);
                 player.PowerUp(powerOnContact);
             }

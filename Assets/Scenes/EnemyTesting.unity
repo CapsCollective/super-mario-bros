@@ -387,6 +387,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mario
       objectReference: {fileID: 0}
+    - target: {fileID: 4247755445731195837, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677871034892603668, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797832420677732906, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797832421563830471, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae26b301192f2c247ae8a69cb5d9952e, type: 3}
 --- !u!1 &400020033
@@ -747,7 +767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b9c3333133345448fa93cf1d268ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MarioState: 0
   animator: {fileID: 848518136}
+  bigMarioBox: {fileID: 0}
   walkSpeed: 5
   runSpeed: 5
   jumpMultiplier: 5
