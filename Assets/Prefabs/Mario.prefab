@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4247755445731195835}
   - component: {fileID: 3416834574285891957}
   - component: {fileID: 8797832421125626119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mario
   m_TagString: Player
   m_Icon: {fileID: 0}
