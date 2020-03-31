@@ -15,14 +15,14 @@ public class ItemSpawn : MonoBehaviour
     }
     
     private IEnumerator Run()
-
     {
-        
-        for (int i = 0; i < 16; i++)
+        GetComponent<SpriteRenderer>().enabled = false;        
+        for (int i = 0; i < 32; i++)
         {
             yield return null; // Wait for brick to be done bouncing
         }
-        
+
+        GetComponent<SpriteRenderer>().enabled = true;
         for (int i = 0; i < 80; i++)
         {
             transform.Translate(0,0.0125f, 0);

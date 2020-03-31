@@ -57,14 +57,14 @@ public class Brick : MonoBehaviour
 
     private IEnumerator BrickHitAnim()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
-            _sprite.Translate(0,0.0625f, 0);
+            _sprite.Translate(0,0.03125f, 0);
             yield return null; 
         }
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
-            _sprite.Translate(0,-0.0625f, 0);
+            _sprite.Translate(0,-0.03125f, 0);
             yield return null;
         }
     }
