@@ -28,7 +28,7 @@ public class LevelCompleteManager : MonoBehaviour
         fireworkCount = Mathf.FloorToInt(GC.TM.GetTimer()) % 10;
         flag.Lower();
         LowerPlayer();
-        CastleEnter();
+        //CastleEnter();
 
     }
 
@@ -46,10 +46,11 @@ public class LevelCompleteManager : MonoBehaviour
     private void StopPlayer()
     {
         // TODO: Stop Mario controls and remove gravity
+        PlayerMovementController.InputEnabled = true;
         PMC.enabled = false;
     }
 
-    private void LowerPlayer()
+    public void LowerPlayer()
     {
         if (lowPlayer)
         {
@@ -61,6 +62,9 @@ public class LevelCompleteManager : MonoBehaviour
     {
         // TODO: Move mario into castle
         // Play victory sfx
+        PMC.enabled = true;
+        PlayerMovementController.InputEnabled = false;
+        PlayerMovementController.AutoMoveDir = 1;
         SoundGuy.Instance.PlaySound("smb_stage_clear");
     }
 
@@ -71,8 +75,7 @@ public class LevelCompleteManager : MonoBehaviour
 
     public IEnumerator AddTimerToScore()
     {
-        // reduce timer to zero incrementally via while loop whilst adding points
-        
+        SoundGuy.Instance.PlaySound("timer_decrease", true);
         while (GC.TM.IsTimeRemaining())
         {
             float timeAmount = Time.deltaTime * timeDecreaseRate;
@@ -86,6 +89,7 @@ public class LevelCompleteManager : MonoBehaviour
 
             yield return null;
         }
+        SoundGuy.Instance.PlaySound("", true);
         FireWorks();
     }
 
@@ -99,10 +103,12 @@ public class LevelCompleteManager : MonoBehaviour
             StartCoroutine("ShootFireworks", fireworkCount);
 
         }
-
-        // Returns to title screen upon point completion
-        GC.LoadTitleScene();
-
+        else
+        {
+            
+            PlayerMovementController.InputEnabled = true;
+            GC.LoadTitleScene();
+        }
     }
 
     public IEnumerator ShootFireworks(int count)
@@ -114,5 +120,9 @@ public class LevelCompleteManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             fireWorks[i].Explode();
         }
+
+        yield return new WaitForSeconds(1.0f);
+        PlayerMovementController.InputEnabled = true;
+        GC.LoadTitleScene();
     }
 }

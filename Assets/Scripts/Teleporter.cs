@@ -44,16 +44,16 @@ public class Teleporter : MonoBehaviour
         switch (enterDir)
         {
             case Direction.Down:
-                for (int i = 0; i < 40; i++)
+                for (int i = 0; i < 80; i++)
                 {
-                    player.transform.Translate(0,-0.051f, 0);
+                    player.transform.Translate(0,-0.025f, 0);
                     yield return null;
                 }
                 break;
             case Direction.Left:
-                for (int i = 0; i < 40; i++)
+                for (int i = 0; i < 80; i++)
                 {
-                    player.transform.Translate(0.026f,0, 0);
+                    player.transform.Translate(0.0125f,0, 0);
                     yield return null;
                 }
                 break;
@@ -63,9 +63,9 @@ public class Teleporter : MonoBehaviour
         switch (exitDir)
         {
             case Direction.Up:
-                for (int i = 0; i < 40; i++)
+                for (int i = 0; i < 80; i++)
                 {
-                    player.transform.Translate(0, 0.051f, 0);
+                    player.transform.Translate(0, 0.025f, 0);
                     yield return null;
                 }
                 break;

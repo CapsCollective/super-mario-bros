@@ -28,7 +28,7 @@ public class Brick : MonoBehaviour
         if (spawn)
         {
             // Spawn what's in the container 
-            Instantiate(spawn, transform.position + Vector3.up, Quaternion.identity);
+            Instantiate(spawn, transform.position, Quaternion.identity);
             if (multiCoinBrick)
             {
                 if(!_timerIsRunning) StartCoroutine(MultiCoinTimer()); //Only trigger once
@@ -46,22 +46,25 @@ public class Brick : MonoBehaviour
             //TODO: destroy if powerup isn't null
             if (/*other.GetComponent<Player>().powerup*/ false)
             {
-                
+                SoundGuy.Instance.PlaySound("smb_breakblock");
+                //Spawn destruction anim
+                Destroy(gameObject);
             }
         }
+        SoundGuy.Instance.PlaySound("smb_bump");
         StartCoroutine(BrickHitAnim());
     }
 
     private IEnumerator BrickHitAnim()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
-            _sprite.Translate(0,0.0625f, 0);
+            _sprite.Translate(0,0.03125f, 0);
             yield return null; 
         }
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 16; i++)
         {
-            _sprite.Translate(0,-0.0625f, 0);
+            _sprite.Translate(0,-0.03125f, 0);
             yield return null;
         }
     }

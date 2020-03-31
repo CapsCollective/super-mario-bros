@@ -10,16 +10,19 @@ public class CoinManager : MonoBehaviour
 
     public Text coinText;
     private LivesManager LM;
+    private ScoreManager SM;
 
     private void Awake()
     {
         ResetCoinCount();
         LM = gameObject.GetComponent<LivesManager>();
+        SM = gameObject.GetComponent<ScoreManager>();
     }
 
     public void AddCoins(int p)
     {
         coinCount += p;
+        SM.AddPoints(200);
         UpdateCoinText();
     }
 
