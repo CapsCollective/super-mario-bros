@@ -10,6 +10,7 @@
           <e p="Brick.cs" t="Include" />
           <e p="CallOnCollision.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
+          <e p="Coin.cs" t="Include" />
           <e p="DummyScript.cs" t="Include" />
           <e p="EndFlag.cs" t="Include" />
           <e p="EnterCastle.cs" t="Include" />
@@ -26,6 +27,7 @@
           <e p="Teleporter.cs" t="Include" />
           <e p="TitleScreenController.cs" t="Include" />
         </e>
+        <e p="StaticCoin.cs" t="Include" />
         <e p="UI" t="Include">
           <e p="CoinManager.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
