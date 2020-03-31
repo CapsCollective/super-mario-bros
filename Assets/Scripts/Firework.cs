@@ -19,13 +19,17 @@ public class Firework : MonoBehaviour
 
     public void Explode()
     {
-        SM.AddPoints(500);
+        if (SM)
+        {
+            SM.AddPoints(500);
+        }
+        
         myAnim.Play("Explode");
 
         // TODO: Play audio of fireworks here /////////////////////////////////////////
 
         // Seems to destroy the soundguy GO
-        SoundGuy.Instance.PlaySound("smb_fireworks");
+        SoundGuy.Instance.PlaySound("smb_fireworks",false);
     }
 
     public void SpriteEnabled()

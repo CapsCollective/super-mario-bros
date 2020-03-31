@@ -11,6 +11,7 @@ public class SoundGuy : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (Instance)
             return;
         Instance = this;

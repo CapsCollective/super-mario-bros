@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5378844898301735829}
   - component: {fileID: 5378844898301735828}
   - component: {fileID: 5378844898301735835}
+  - component: {fileID: -8786915173865830163}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Starman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,8 +71,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 688164451197083996, guid: 07ec58d045cf3524b875255ce5d1e26e, type: 3}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 7035637649822329915, guid: 07ec58d045cf3524b875255ce5d1e26e,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 5378844898301735834}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c6843428bb791e478d59c0468432d1e, type: 2}
+  m_Controller: {fileID: 9100000, guid: ce4c857b28799dd438a9ce1ad6cd84d6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -101,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8786915173865830163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378844898301735834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf5631f40e9518449778efe2be1e87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
