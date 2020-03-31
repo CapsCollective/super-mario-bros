@@ -128,7 +128,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4873443673481797075}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -147,12 +147,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4873443673481797075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b01c6e362f6148a4fb659a524ed82d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpeed: -2
+  m_Name:
+  m_EditorClassIdentifier:
+  horizontalSpeed: 3
   rayOffsetExcess: -0.03
   rayDistanceExcess: 0.03
   avoidsFalling: 0
@@ -237,7 +237,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

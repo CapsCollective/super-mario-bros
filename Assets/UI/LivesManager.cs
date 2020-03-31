@@ -19,7 +19,8 @@ public class LivesManager : MonoBehaviour
 
     public void AddLives()
     {
-            lives++;
+        lives++;
+        SoundGuy.Instance.PlaySound("smb_1-up");
     }
 
     public void LoseLives()

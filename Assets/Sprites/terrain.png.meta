@@ -175,13 +175,13 @@ TextureImporter:
     second: terrain_50
   - first:
       213: -2106992341454624283
-    second: terrain_51
+    second: static coin 1
   - first:
       213: 6283908498951504376
-    second: terrain_52
+    second: static coin 2
   - first:
       213: -8584776294191440814
-    second: terrain_53
+    second: static coin 3
   - first:
       213: 4265688770978257988
     second: terrain_54
@@ -355,13 +355,13 @@ TextureImporter:
     second: terrain_110
   - first:
       213: -5240608780227730015
-    second: terrain_111
+    second: static coin (dark) 1
   - first:
       213: -7185258708117793234
-    second: terrain_112
+    second: static coin (dark) 2
   - first:
       213: -8349086895316703593
-    second: terrain_113
+    second: static coin (dark) 3
   - first:
       213: 1942023056010640119
     second: terrain_114
@@ -748,13 +748,13 @@ TextureImporter:
     second: terrain_241
   - first:
       213: -3209350294011356616
-    second: terrain_242
+    second: Pipe Side 1
   - first:
       213: 3531269300831205375
-    second: terrain_243
+    second: Pipe Side 2
   - first:
       213: -6446414290988229761
-    second: terrain_244
+    second: Pipe Side 3
   - first:
       213: 4246588582843944735
     second: terrain_245
@@ -826,13 +826,13 @@ TextureImporter:
     second: terrain_267
   - first:
       213: 6448976745792198397
-    second: terrain_268
+    second: Pipe Side 4
   - first:
       213: 860641698345688055
-    second: terrain_269
+    second: Pipe Side 5
   - first:
       213: 8035943893451721649
-    second: terrain_270
+    second: Pipe Side 6
   - first:
       213: 4592187312196835650
     second: terrain_271
@@ -895,13 +895,13 @@ TextureImporter:
     second: pipe 2
   - first:
       213: 739076541491102034
-    second: terrain_291
+    second: Pipe Side 1
   - first:
       213: -4613813251608797026
-    second: terrain_292
+    second: Pipe Side 2
   - first:
       213: 3397564757092766216
-    second: terrain_293
+    second: Pipe Side 3
   - first:
       213: -1070693801789536213
     second: terrain_294
@@ -973,13 +973,13 @@ TextureImporter:
     second: pipe 4
   - first:
       213: -5603414251577234421
-    second: terrain_317
+    second: Pipe Side 4
   - first:
       213: 4745590001958625101
-    second: terrain_318
+    second: Pipe Side 5
   - first:
       213: -5033065374586598807
-    second: terrain_319
+    second: Pipe Side 6
   - first:
       213: 1085001523482098313
     second: terrain_320
@@ -3017,7 +3017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_51
+      name: static coin 1
       rect:
         serializedVersion: 2
         x: 384
@@ -3038,7 +3038,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_52
+      name: static coin 2
       rect:
         serializedVersion: 2
         x: 400
@@ -3059,7 +3059,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_53
+      name: static coin 3
       rect:
         serializedVersion: 2
         x: 416
@@ -4277,7 +4277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_111
+      name: static coin (dark) 1
       rect:
         serializedVersion: 2
         x: 384
@@ -4298,7 +4298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_112
+      name: static coin (dark) 2
       rect:
         serializedVersion: 2
         x: 400
@@ -4319,7 +4319,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_113
+      name: static coin (dark) 3
       rect:
         serializedVersion: 2
         x: 416
@@ -6986,69 +6986,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_242
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83a58a559e81673d0800000000000000
-      internalID: -3209350294011356616
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terrain_243
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff7394a38b6910130800000000000000
-      internalID: 3531269300831205375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terrain_244
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7b15ae5b5cb986a0800000000000000
-      internalID: -6446414290988229761
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: terrain_245
       rect:
         serializedVersion: 2
@@ -7490,69 +7427,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_268
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 288
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df6d2b1ae2e5f7950800000000000000
-      internalID: 6448976745792198397
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terrain_269
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 288
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fb98c4901d91fb00800000000000000
-      internalID: 860641698345688055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terrain_270
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 288
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1bbc8241568658f60800000000000000
-      internalID: 8035943893451721649
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: terrain_271
       rect:
         serializedVersion: 2
@@ -7931,7 +7805,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_291
+      name: Pipe Side 1
       rect:
         serializedVersion: 2
         x: 32
@@ -7952,7 +7826,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_292
+      name: Pipe Side 2
       rect:
         serializedVersion: 2
         x: 48
@@ -7973,7 +7847,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_293
+      name: Pipe Side 3
       rect:
         serializedVersion: 2
         x: 64
@@ -8477,7 +8351,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_317
+      name: Pipe Side 4
       rect:
         serializedVersion: 2
         x: 32
@@ -8498,7 +8372,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_318
+      name: Pipe Side 5
       rect:
         serializedVersion: 2
         x: 48
@@ -8519,7 +8393,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: terrain_319
+      name: Pipe Side 6
       rect:
         serializedVersion: 2
         x: 64

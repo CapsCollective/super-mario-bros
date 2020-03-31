@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -811658310727145550, guid: f18faef82bd1ab24db8ecc87eefe6111,
+  m_Sprite: {fileID: -4375475379939271438, guid: 330ee58eb0727f64baa388e73d844ca7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2428316749852858194}
   walkSpeed: 0.15
-  jumpMultiplier: 0.25
+  runSpeed: 0.225
+  jumpMultiplier: 0.2
   jumpSpeed: 5
   groundOffset: -0.55
   groundDistance: 0.02
@@ -110,10 +111,10 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -122,7 +123,7 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -164,7 +165,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dab9325528ead9c4b9f54695d7c78129, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -178,7 +179,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4247755445731195837}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dab9325528ead9c4b9f54695d7c78129, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
