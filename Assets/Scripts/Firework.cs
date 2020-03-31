@@ -29,7 +29,7 @@ public class Firework : MonoBehaviour
         // TODO: Play audio of fireworks here /////////////////////////////////////////
 
         // Seems to destroy the soundguy GO
-        SoundGuy.Instance.PlaySound("smb_fireworks");
+        SoundGuy.Instance.PlaySound("smb_fireworks",false);
     }
 
     public void SpriteEnabled()

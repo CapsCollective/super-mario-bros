@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bcfc3ce0ecedb46abf9dba12496693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDecreaseRate: 5
+  timeDecreaseRate: 50
   timerPoint: 0
   fireWorks: []
 --- !u!114 &1629539750278976693

@@ -100,9 +100,14 @@ public class GameController : MonoBehaviour
     public void LoadTitleScene()
     {
         state = LevelState.Title;
+        foreach( GameObject g in GameObject.FindGameObjectsWithTag("Soundguy"))
+        {
+            Destroy(g);
+        }
         LoadScene();
         SetUpTitle();
         Destroy(gameObject);
+        
     }
 
     public void ShowUICanvas()
