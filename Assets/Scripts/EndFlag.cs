@@ -60,7 +60,7 @@ public class EndFlag : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.CompareTag("Player"))
         {
             //LCM.AddFlagPoints(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));
             LCM.Begin(FlagPolePositionPoints(collision.gameObject.transform.position.y, collision.bounds.size.y));

@@ -121,6 +121,8 @@ public class PlayerMovementController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
+                //TODO: set sound based on size
+                SoundGuy.Instance.PlaySound(true? "smb_jump_small" : "smb_jump_super");
                 jump = true;
             }
 
