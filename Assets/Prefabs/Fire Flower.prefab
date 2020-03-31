@@ -68,7 +68,6 @@ GameObject:
   - component: {fileID: 4873443673481797078}
   - component: {fileID: 4873443673481797081}
   - component: {fileID: 4873443673481797080}
-  - component: {fileID: 4873443673481797079}
   - component: {fileID: 7940109074892070287}
   - component: {fileID: 1578721864764639047}
   m_Layer: 8
@@ -140,34 +139,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4873443673481797079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4873443673481797075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b01c6e362f6148a4fb659a524ed82d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpeed: 0
-  rayOffsetExcess: -0.03
-  rayDistanceExcess: 0.03
-  avoidsFalling: 0
-  hostile: 0
-  powerOnContact: 1
-  livesOnContact: 0
-  triggerCollider: {fileID: 4873443673374742831}
-  deathObject: {fileID: 0}
-  raycastLayer:
-    serializedVersion: 2
-    m_Bits: 1025
-  squashLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  debug: 0
 --- !u!212 &7940109074892070287
 SpriteRenderer:
   m_ObjectHideFlags: 0
