@@ -8207,6 +8207,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: dab9325528ead9c4b9f54695d7c78129, type: 2}
+    - target: {fileID: 4247755445731195832, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195833, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8268,6 +8273,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4375475379939271438, guid: 330ee58eb0727f64baa388e73d844ca7,
         type: 3}
+    - target: {fileID: 4247755445731195834, guid: ae26b301192f2c247ae8a69cb5d9952e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195836, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
       propertyPath: m_Material
@@ -8806,7 +8816,7 @@ PrefabInstance:
     - target: {fileID: 3515396591198169895, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3515396591198169895, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
         type: 3}
@@ -10579,7 +10589,7 @@ Transform:
   m_LocalScale: {x: 6.245, y: 6.245, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &982407274 stripped
 Transform:
