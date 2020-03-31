@@ -747,7 +747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b9c3333133345448fa93cf1d268ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MarioState: 0
   animator: {fileID: 848518136}
+  bigMarioBox: {fileID: 0}
   walkSpeed: 5
   runSpeed: 5
   jumpMultiplier: 5
@@ -899,6 +901,8 @@ GameObject:
   - component: {fileID: 916351077}
   - component: {fileID: 916351076}
   - component: {fileID: 916351075}
+  - component: {fileID: 916351079}
+  - component: {fileID: 916351078}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -971,6 +975,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916351078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916351074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800ceb451d38a7e4a8a67bb36699093c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CRT: {fileID: 4800000, guid: 855900e341b4c654a80d2bab98fb6ee3, type: 3}
+  channelStep: 1
+  strength1: 0.7
+  strength2: 0
+  contrast: 1.2
+  brightness: 0.15
+  scanlineStep: 1
+  scanlineColour: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 0}
+  curvature: 0.8
+--- !u!114 &916351079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916351074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cfff6af8c14214f9cdd46f5b34721e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloomShader: {fileID: 4800000, guid: 2b5869a0a4019b64fb752ac34e563e7e, type: 3}
+  radialBlur: {fileID: 0}
+  debug: 0
+  iterations: 5
+  threshold: 1.2
+  softThreshold: 0.5
+  intensity: 0.8
 --- !u!1 &1322080176
 GameObject:
   m_ObjectHideFlags: 0
