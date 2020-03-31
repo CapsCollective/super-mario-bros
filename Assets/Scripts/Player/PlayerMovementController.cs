@@ -56,6 +56,7 @@ public class PlayerMovementController : MonoBehaviour
     private float acceleration = 0;
     private Mariotransform MarioTransform;
     private LayerMask layerMask;
+    private BoxCollider2D collider;
 
     public static Action<Power, MarioState> OnPowerupPickup;
 
@@ -74,6 +75,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         MarioTransform = GetComponent<Mariotransform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
         //spriteRenderer = GetComponent<SpriteRenderer>();
         mainCam = Camera.main;
 
@@ -85,11 +87,15 @@ public class PlayerMovementController : MonoBehaviour
             MarioState = state;
             if (state == MarioState.Big)
             {
-                bigMarioBox.enabled = true;
+                collider.size = new Vector2(1, 2);
+                collider.offset = new Vector2(0, 0.5f);
+                //igMarioBox.enabled = true;
             }
             else
             {
-                bigMarioBox.enabled = false;
+                collider.size = new Vector2(1, 1);
+                collider.offset = new Vector2(0, 0);
+                //bigMarioBox.enabled = false;
             }
         };
 
@@ -222,6 +228,7 @@ public class PlayerMovementController : MonoBehaviour
             case Power.Mushroom:
                 Debug.Log("Player received Mushroom Power!");
                 OnPowerupPickup(power, MarioState.Small);
+                SoundGuy.Instance.PlaySound("Resources/smb_powerup.wav");
                 break;
             case Power.Star:
                 Debug.Log("Player received Star Power!");
