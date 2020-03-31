@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
         _startPos = transform.position;
         SoundGuy.Instance.PlaySound("smb_coin");
         StartCoroutine(Run());
+        transform.Translate(0,1,0); //Start above brick
     }
     
     private IEnumerator Run()

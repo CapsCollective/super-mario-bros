@@ -6,6 +6,7 @@
     <e p="C:\Users\Ben\Programming\super-mario-bros" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="ItemSpawn.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Brick.cs" t="Include" />
           <e p="CallOnCollision.cs" t="Include" />
@@ -28,6 +29,7 @@
           <e p="Teleporter.cs" t="Include" />
           <e p="TitleScreenController.cs" t="Include" />
         </e>
+        <e p="SpawnChoice.cs" t="Include" />
         <e p="UI" t="Include">
           <e p="CoinManager.cs" t="Include" />
           <e p="GameController.cs" t="Include" />

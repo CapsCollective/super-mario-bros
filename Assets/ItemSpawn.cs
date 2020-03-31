@@ -1,0 +1,35 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ItemSpawn : MonoBehaviour
+{
+    void Start() {
+        
+        // Disable during spawn
+        GetComponent<NPCBehaviour>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+        
+        SoundGuy.Instance.PlaySound("smb_powerup_appears");
+        StartCoroutine(Run());
+    }
+    
+    private IEnumerator Run()
+
+    {
+        
+        for (int i = 0; i < 16; i++)
+        {
+            yield return null; // Wait for brick to be done bouncing
+        }
+        
+        for (int i = 0; i < 80; i++)
+        {
+            transform.Translate(0,0.0125f, 0);
+            yield return null;
+        }
+
+        GetComponent<Rigidbody2D>().simulated = true;
+        GetComponent<NPCBehaviour>().enabled = true;
+    }
+}

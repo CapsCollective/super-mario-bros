@@ -28,7 +28,7 @@ public class Brick : MonoBehaviour
         if (spawn)
         {
             // Spawn what's in the container 
-            Instantiate(spawn, transform.position + Vector3.up, Quaternion.identity);
+            Instantiate(spawn, transform.position, Quaternion.identity);
             if (multiCoinBrick)
             {
                 if(!_timerIsRunning) StartCoroutine(MultiCoinTimer()); //Only trigger once
