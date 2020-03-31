@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+// Different powers, used as an argument for PowerUp() so other entities can power-up Mario
+public enum Power { None, Flower, Mushroom, Star }
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
@@ -12,10 +16,10 @@ public class PlayerMovementController : MonoBehaviour
     // 1 = Right
     // -1 = Left
     public static float AutoMoveDir = 1;
-    
-    public Power activePowerup = Power.None;
+    public MarioState MarioState;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private BoxCollider2D bigMarioBox;
     [Space]
 
     // The default walk speed
@@ -50,11 +54,12 @@ public class PlayerMovementController : MonoBehaviour
     private float gravity = 0;
     private float desiredXDir = 0;
     private float acceleration = 0;
+    private Mariotransform MarioTransform;
+    private LayerMask layerMask;
+
+    public static Action<Power, MarioState> OnPowerupPickup;
 
     public float CurrentAcceleration { get { return desiredXDir; } }
-
-    // Different powers, used as an argument for PowerUp() so other entities can power-up Mario
-    public enum Power { None, Flower, Mushroom, Star }
 
     private bool isGrounded
     {
@@ -67,9 +72,28 @@ public class PlayerMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MarioTransform = GetComponent<Mariotransform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         mainCam = Camera.main;
+
+        MarioTransform.OnTransform += (sr, an, state) =>
+        {
+            Debug.Log("OnTransform()");
+            spriteRenderer = sr;
+            animator = an;
+            MarioState = state;
+            if (state == MarioState.Big)
+            {
+                bigMarioBox.enabled = true;
+            }
+            else
+            {
+                bigMarioBox.enabled = false;
+            }
+        };
+
+        layerMask = LayerMask.NameToLayer("Untagged");
     }
 
     void Update()
@@ -82,10 +106,10 @@ public class PlayerMovementController : MonoBehaviour
 
         currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
-        animator.SetFloat("speed", Mathf.Abs(desiredXDir));
+        animator.SetFloat("speed", Mathf.Abs(desiredXDir) * (currentSpeed * 10));
         animator.SetBool("isJumping", !isGrounded);
 
-        spriteRenderer.flipX = Mathf.Sign(desiredXDir) < 0 ? true : false;
+        MarioTransform.CurrentSpriteRenderer.flipX = Mathf.Sign(desiredXDir) < 0 ? true : false;
 
         if (IsColliding())
             desiredXDir = 0;
@@ -154,7 +178,8 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool IsHeadJumping()
     {
-        RaycastHit2D headRay = Physics2D.BoxCast(transform.position + new Vector3(0, -groundOffset, 0), new Vector2(.25f, 0.05f), 0, Vector2.up, groundDistance);
+        float headOffset = MarioState == MarioState.Big ? 1f : 0;
+        RaycastHit2D headRay = Physics2D.BoxCast(transform.position + new Vector3(0, headOffset + -groundOffset, 0), new Vector2(.25f, 0.05f), 0, Vector2.up, groundDistance, layerMask);
         if (headRay.collider != null)
         {
             Debug.Log(headRay.collider.name);
@@ -165,7 +190,7 @@ public class PlayerMovementController : MonoBehaviour
     
     private bool IsColliding()
     {
-        RaycastHit2D collisionCheck = Physics2D.BoxCast(transform.position + new Vector3(Mathf.Sign(desiredXDir) * 0.55f, 0, 0), new Vector2(0.05f, .9f), 0, Vector3.right * Mathf.Sign(desiredXDir), .1f);
+        RaycastHit2D collisionCheck = Physics2D.BoxCast(transform.position + new Vector3(Mathf.Sign(desiredXDir) * 0.55f, 0, 0), new Vector2(0.05f, .9f), 0, Vector3.right * Mathf.Sign(desiredXDir), .1f, layerMask);
         if (collisionCheck.collider != null)
         {
             Debug.Log(collisionCheck.collider.name);
@@ -176,7 +201,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D groundRay = Physics2D.BoxCast(transform.position + new Vector3(0, groundOffset,0 ), new Vector2(1,0.05f),0 , Vector2.down, groundDistance);
+        RaycastHit2D groundRay = Physics2D.BoxCast(transform.position + new Vector3(0, groundOffset,0 ), new Vector2(1,0.05f),0 , Vector2.down, groundDistance, layerMask);
         Debug.DrawRay(transform.position + new Vector3(0, groundOffset, 0), Vector2.down);
         if (groundRay.collider != null)
         {
@@ -196,6 +221,7 @@ public class PlayerMovementController : MonoBehaviour
                 break;
             case Power.Mushroom:
                 Debug.Log("Player received Mushroom Power!");
+                OnPowerupPickup(power, MarioState.Small);
                 break;
             case Power.Star:
                 Debug.Log("Player received Star Power!");

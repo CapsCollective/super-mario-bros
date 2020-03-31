@@ -128,7 +128,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2218598277776999214}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2218598277776999214}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b01c6e362f6148a4fb659a524ed82d76, type: 3}
   m_Name: 
@@ -161,9 +161,12 @@ MonoBehaviour:
   livesOnContact: 1
   triggerCollider: {fileID: 2218598277682595794}
   deathObject: {fileID: 0}
+  deathTime: 0
+  bumpHorizontal: 0
+  bumpVertical: 0
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 257
   squashLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -225,7 +228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2218598277776999214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bf5631f40e9518449778efe2be1e87e, type: 3}
   m_Name: 

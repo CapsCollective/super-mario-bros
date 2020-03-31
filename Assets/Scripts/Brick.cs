@@ -45,7 +45,7 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            if (other.GetComponent<PlayerMovementController>().activePowerup != PlayerMovementController.Power.None)
+            if (other.GetComponent<PlayerMovementController>().MarioState == MarioState.Big)
             {
                 SoundGuy.Instance.PlaySound("smb_breakblock");
                 Instantiate(brickBrokenPrefab, transform.position, Quaternion.identity);
