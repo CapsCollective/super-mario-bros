@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.095}
+  m_Size: {x: 1, y: 0.95}
   m_EdgeRadius: 0
 --- !u!114 &4218243301721611864
 MonoBehaviour:
@@ -104,6 +104,8 @@ MonoBehaviour:
   triggerCollider: {fileID: 4218243302181375204}
   deathObject: {fileID: 0}
   deathTime: 0
+  bumpHorizontal: 200
+  bumpVertical: 450
   raycastLayer:
     serializedVersion: 2
     m_Bits: 1025

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6968267757677193801}
   - component: {fileID: 6968267757677193800}
   - component: {fileID: 6968267757744010892}
+  - component: {fileID: 6464316052495535552}
   m_Layer: 8
   m_Name: Goomba
   m_TagString: Enemy
@@ -103,7 +104,9 @@ MonoBehaviour:
   livesOnContact: 0
   triggerCollider: {fileID: 6968267757907010027}
   deathObject: {fileID: 0}
-  deathTime: 0
+  deathTime: 1
+  bumpHorizontal: 200
+  bumpVertical: 450
   raycastLayer:
     serializedVersion: 2
     m_Bits: 1025
@@ -162,6 +165,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6464316052495535552
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968267757677193803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69c91f8e34f90ae479bb34062dd3ca27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6968267757907010005
 GameObject:
   m_ObjectHideFlags: 0

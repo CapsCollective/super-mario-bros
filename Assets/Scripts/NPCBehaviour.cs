@@ -77,13 +77,16 @@ public class NPCBehaviour : MonoBehaviour
             Vector3 head = transform.position + transform.up * triggerCollider.bounds.extents.y;
             bool hitHead = Vector3.Dot(transform.up, (feet - head).normalized) >= 0;
 
-            if (true) // 'false' SHOULD BE REPLACED WITH player.StarActive or something...
+            if (false) // 'false' SHOULD BE REPLACED WITH player.StarActive or something...
             {
                 Kill(false);
             }
             else if (!hostile || hitHead) 
             {
                 Kill(true);
+
+                // player.Bounce(); <- REQUIRES FUNCTION IN PLAYER CONTROLLER TO CALL!
+
                 player.AddLives(livesOnContact);
                 player.PowerUp(powerOnContact);
             }
@@ -105,12 +108,19 @@ public class NPCBehaviour : MonoBehaviour
         dead = true;
 
         // Start animation, etc...
-        if (squashed)
+        if (hostile && squashed)
         {
-            animator.SetTrigger("Squash");
-            yield return new WaitForSeconds(deathTime);
+            if (deathObject)
+            {
+                Instantiate(deathObject, transform.position, transform.rotation);
+            }
+            else
+            {
+                animator.SetTrigger("Squash");
+                yield return new WaitForSeconds(deathTime);
+            }
         }
-        else
+        else if (hostile)
         {
             animator.SetTrigger("Bump");
 
@@ -121,7 +131,6 @@ public class NPCBehaviour : MonoBehaviour
         }
 
         // When it's done:
-        if (deathObject) Instantiate(deathObject, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
