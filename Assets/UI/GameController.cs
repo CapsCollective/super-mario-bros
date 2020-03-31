@@ -141,7 +141,6 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        SM.SaveHighScore();
         LoadGameOverScene();
     }
 

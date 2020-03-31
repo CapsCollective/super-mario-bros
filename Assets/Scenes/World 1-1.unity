@@ -322,7 +322,7 @@ PrefabInstance:
     - target: {fileID: 3175725942094931216, guid: a8b2916e9ed7fe94d97048093543c32d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3175725942094931216, guid: a8b2916e9ed7fe94d97048093543c32d,
         type: 3}
@@ -8250,7 +8250,7 @@ PrefabInstance:
     - target: {fileID: 4247755445731195833, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4247755445731195833, guid: ae26b301192f2c247ae8a69cb5d9952e,
         type: 3}
@@ -8758,21 +8758,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3515396591198169889, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
-        type: 3}
-      propertyPath: callback.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3515396591198169889, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
-        type: 3}
-      propertyPath: callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3515396591198169889, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
-        type: 3}
-      propertyPath: callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayDeathSound
-      objectReference: {fileID: 0}
     - target: {fileID: 3515396591198169894, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
         type: 3}
       propertyPath: m_Name
@@ -8816,7 +8801,7 @@ PrefabInstance:
     - target: {fileID: 3515396591198169895, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3515396591198169895, guid: 3b05d6c52c77d469d8a3a89d0aa3b014,
         type: 3}
