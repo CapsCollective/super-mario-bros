@@ -19,6 +19,9 @@ public class NPCBehaviour : MonoBehaviour
 
     public Collider2D triggerCollider;
     public GameObject deathObject;
+    public float deathTime;
+    public float bumpHorizontal;
+    public float bumpVertical;
 
     public LayerMask raycastLayer;
     public LayerMask squashLayer;
@@ -29,6 +32,10 @@ public class NPCBehaviour : MonoBehaviour
     // Private variables
     private BoxCollider2D bc2d;
     private Rigidbody2D rb2d;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
+    private bool dead = false;
 
     // Properties
     private float XOffset { get { return bc2d.bounds.extents.x; } }
@@ -38,6 +45,8 @@ public class NPCBehaviour : MonoBehaviour
     {
         bc2d = GetComponent<BoxCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -49,26 +58,32 @@ public class NPCBehaviour : MonoBehaviour
         }
 
         if ((avoidsFalling && rb2d.velocity.y == 0 && !FloorCast()) || (ForwardCast())) horizontalSpeed *= -1f;
+
+        if (horizontalSpeed > 0) spriteRenderer.flipX = true;
+        else if (horizontalSpeed < 0) spriteRenderer.flipX = false;
     }
 
     private void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(horizontalSpeed, rb2d.velocity.y);
+        if (!dead) rb2d.velocity = new Vector2(horizontalSpeed, rb2d.velocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Vector3 feet = other.transform.position - other.transform.up * other.bounds.extents.y;
-        Vector3 head = transform.position + transform.up * triggerCollider.bounds.extents.y;
-
-        bool hitHead = Vector3.Dot(transform.up, (feet - head).normalized) >= 0;
-        
         PlayerMovementController player;
         if (player = other.GetComponent<PlayerMovementController>())
         {
-            if (!hostile || hitHead)
+            Vector3 feet = other.transform.position - other.transform.up * other.bounds.extents.y;
+            Vector3 head = transform.position + transform.up * triggerCollider.bounds.extents.y;
+            bool hitHead = Vector3.Dot(transform.up, (feet - head).normalized) >= 0;
+
+            if (true) // 'false' SHOULD BE REPLACED WITH player.StarActive or something...
             {
-                Kill();
+                Kill(false);
+            }
+            else if (!hostile || hitHead) 
+            {
+                Kill(true);
                 player.AddLives(livesOnContact);
                 player.PowerUp(powerOnContact);
             }
@@ -79,20 +94,35 @@ public class NPCBehaviour : MonoBehaviour
         }
     }
 
-    public void Kill()
+    public void Kill(bool squashed)
     {
-        StartCoroutine(Die());
+        StartCoroutine(Die(squashed));
     }
 
-    private IEnumerator Die()
+    private IEnumerator Die(bool squashed)
     {
+        //horizontalSpeed = 0;
+        dead = true;
+
         // Start animation, etc...
-        yield return null;
+        if (squashed)
+        {
+            animator.SetTrigger("Squash");
+            yield return new WaitForSeconds(deathTime);
+        }
+        else
+        {
+            animator.SetTrigger("Bump");
+
+            bc2d.enabled = false;
+            rb2d.AddForce(new Vector2(bumpHorizontal, bumpVertical));
+
+            yield return new WaitForSeconds(10f);
+        }
 
         // When it's done:
         if (deathObject) Instantiate(deathObject, transform.position, transform.rotation);
         Destroy(gameObject);
-
     }
 
     private bool ForwardCast()
@@ -116,7 +146,7 @@ public class NPCBehaviour : MonoBehaviour
         
         foreach (RaycastHit2D rcHit in hits)
         {
-            if (rcHit.collider != triggerCollider && rcHit.normal == (new Vector2(-horizontalSpeed, 0f)).normalized)
+            if (rcHit.collider != triggerCollider && rcHit.normal == (new Vector2(-horizontalSpeed, 0f)).normalized && rcHit.distance > 0f)
             {
                 hit = true;
                 break;
