@@ -18,6 +18,8 @@ public class PlayerMovementController : MonoBehaviour
 
     // The default walk speed
     [SerializeField] private float walkSpeed = 5;
+    // The default walk speed
+    [SerializeField] private float runSpeed = 5;
     // How high the jump will go
     [SerializeField] private float jumpMultiplier = 5;
     // The speed of the jump
@@ -38,6 +40,7 @@ public class PlayerMovementController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D playerRigidbody;
     private Camera mainCam;
+    private float currentSpeed;
     // Timer used for the lerp for the jump
     private float currentJumpTimer = 0;
     // If the player currently wants to jump
@@ -74,6 +77,8 @@ public class PlayerMovementController : MonoBehaviour
             desiredXDir = Mathf.SmoothDamp(desiredXDir, Input.GetAxisRaw("Horizontal"), ref acceleration, accelrationTime);
         else
             desiredXDir = AutoMoveDir;
+
+        currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
         animator.SetFloat("speed", Mathf.Abs(desiredXDir));
         animator.SetBool("isJumping", !isGrounded);
@@ -141,7 +146,7 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * walkSpeed, gravity));
+        playerRigidbody.MovePosition(transform.position + new Vector3(desiredXDir * currentSpeed, gravity));
         //Debug.Log($"{IsGrounded()} | {transform.position}");'
     }
 
