@@ -7,7 +7,7 @@ public class ItemSpawn : MonoBehaviour
     void Start() {
         
         // Disable during spawn
-        GetComponent<NPCBehaviour>().enabled = false;
+        if(GetComponent<NPCBehaviour>()) GetComponent<NPCBehaviour>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
         
         SoundGuy.Instance.PlaySound("smb_powerup_appears");
@@ -30,6 +30,6 @@ public class ItemSpawn : MonoBehaviour
         }
 
         GetComponent<Rigidbody2D>().simulated = true;
-        GetComponent<NPCBehaviour>().enabled = true;
+        if(GetComponent<NPCBehaviour>()) GetComponent<NPCBehaviour>().enabled = true;
     }
 }
