@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6968267757677193806}
   - component: {fileID: 6968267757677193801}
   - component: {fileID: 6968267757677193800}
-  - component: {fileID: 5460771239341429937}
-  - component: {fileID: 1756694918445122087}
+  - component: {fileID: 6968267757744010892}
+  - component: {fileID: 6464316052495535552}
   m_Layer: 8
   m_Name: Goomba
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6968267757677193803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6968267757907010026}
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.025}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -81,7 +81,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.95}
   m_EdgeRadius: 0
 --- !u!114 &6968267757677193800
 MonoBehaviour:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b01c6e362f6148a4fb659a524ed82d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   horizontalSpeed: -2
   rayOffsetExcess: -0.03
   rayDistanceExcess: 0.03
@@ -104,14 +104,17 @@ MonoBehaviour:
   livesOnContact: 0
   triggerCollider: {fileID: 6968267757907010027}
   deathObject: {fileID: 0}
+  deathTime: 1
+  bumpHorizontal: 200
+  bumpVertical: 450
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 257
   squashLayer:
     serializedVersion: 2
     m_Bits: 512
   debug: 0
---- !u!212 &5460771239341429937
+--- !u!212 &6968267757744010892
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,8 +152,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 2731795287329381114, guid: fbda8b137c6b1aa48914ddeebbcd4d9a,
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5770958956045166959, guid: 6e3cf09f0e0edb24ebea198db58f899b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,7 +165,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1756694918445122087
+--- !u!95 &6464316052495535552
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -172,12 +175,12 @@ Animator:
   m_GameObject: {fileID: 6968267757677193803}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bc3b451004da81d4c9a5ba9c37a2e1fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 69c91f8e34f90ae479bb34062dd3ca27, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
