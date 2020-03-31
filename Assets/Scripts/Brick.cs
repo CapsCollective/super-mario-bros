@@ -9,6 +9,8 @@ public class Brick : MonoBehaviour
     
     public bool multiCoinBrick = false;
     private bool _timerIsRunning = false;
+
+    public GameObject brickBrokenPrefab;
     
     public GameObject spawn;
     private Transform _sprite;
@@ -43,11 +45,10 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            //TODO: destroy if powerup isn't null
-            if (/*other.GetComponent<Player>().powerup*/ false)
+            if (other.GetComponent<PlayerMovementController>().MarioState == MarioState.Big)
             {
                 SoundGuy.Instance.PlaySound("smb_breakblock");
-                //Spawn destruction anim
+                Instantiate(brickBrokenPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b000f13c1c32bb848a6cd45a9a447a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedMushroom: {fileID: 4873443673481797075, guid: e25e8c4f49980ff458b67b705999392e,
+  RedMushroom: {fileID: 3964551642656033327, guid: e25e8c4f49980ff458b67b705999392e,
     type: 3}
-  FireFlower: {fileID: 4873443673481797075, guid: bc3c529546c1630418ebe5a925a6c23b,
+  FireFlower: {fileID: 3964551642656033327, guid: e25e8c4f49980ff458b67b705999392e,
     type: 3}
