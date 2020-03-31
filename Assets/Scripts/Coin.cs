@@ -6,7 +6,13 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     private Vector3 _startPos;
+    private CoinManager CM;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        CM = GameObject.FindGameObjectWithTag("GameController").GetComponent<CoinManager>();
+    }
     void Start()
     {
         _startPos = transform.position;
@@ -22,7 +28,9 @@ public class Coin : MonoBehaviour
             transform.Translate(0,Mathf.Cos(i/10f)/4, 0);
             yield return null;
         }
-        //Todo: Increase score and coin count
+
+        CM.AddCoins(1);
+
         Destroy(gameObject);
     }
 }
