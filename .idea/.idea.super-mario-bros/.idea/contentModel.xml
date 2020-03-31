@@ -24,10 +24,10 @@
             <e p="PlayerMovementController.cs" t="Include" />
           </e>
           <e p="SoundGuy.cs" t="Include" />
+          <e p="StaticCoin.cs" t="Include" />
           <e p="Teleporter.cs" t="Include" />
           <e p="TitleScreenController.cs" t="Include" />
         </e>
-        <e p="StaticCoin.cs" t="Include" />
         <e p="UI" t="Include">
           <e p="CoinManager.cs" t="Include" />
           <e p="GameController.cs" t="Include" />

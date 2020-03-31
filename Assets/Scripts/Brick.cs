@@ -46,9 +46,12 @@ public class Brick : MonoBehaviour
             //TODO: destroy if powerup isn't null
             if (/*other.GetComponent<Player>().powerup*/ false)
             {
-                
+                SoundGuy.Instance.PlaySound("smb_breakblock");
+                //Spawn destruction anim
+                Destroy(gameObject);
             }
         }
+        SoundGuy.Instance.PlaySound("smb_bump");
         StartCoroutine(BrickHitAnim());
     }
 
