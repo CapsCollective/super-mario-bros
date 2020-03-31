@@ -66,7 +66,6 @@ public class GameController : MonoBehaviour
         TM.ToggleTimerText(false);
         ShowUICanvas();
         Invoke("LoadMainScene", 2f);
-        //Invoke("LoadGameOverScene", 2f);
     }
 
     public void ShowLoadingCanvas()
@@ -92,7 +91,6 @@ public class GameController : MonoBehaviour
         LoadScene();
         LoadingCanvas.enabled = false;
         ShowUICanvas();
-        //TODO: Play GameOver Audio
         SoundGuy.Instance.PlaySound("smb_gameover");
         Invoke("LoadTitleScene", 4f);
     }
