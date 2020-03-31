@@ -31,6 +31,9 @@ public class Mariotransform : MonoBehaviour
             transform.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
 
+        sprites[0].enabled = true;
+        transforms[0].gameObject.GetComponent<BoxCollider2D>().enabled = true;
+
         coroutineTransform = marioTransform();
         coroutineDamaged = marioDamaged();
        
