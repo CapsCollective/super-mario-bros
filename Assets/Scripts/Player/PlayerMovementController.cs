@@ -208,4 +208,12 @@ public class PlayerMovementController : MonoBehaviour
         // Decrement player lives and respawn etc...
         Debug.Log("Player has died (not functional yet)!");
     }
+
+    [ContextMenu("Bouce")]
+    public void Bounce()
+    {
+        jump = true;
+        // Change this to 0 for full height
+        currentJumpTimer = 0.5f;
+    }
 }
