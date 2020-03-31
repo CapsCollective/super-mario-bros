@@ -10,6 +10,7 @@ public class Supermario : MonoBehaviour
     private float delay = 0.1f;
     private Animator anim;
     private IEnumerator coroutineTransform;
+
     // Start is called before the first frame update
     void Start()
     {

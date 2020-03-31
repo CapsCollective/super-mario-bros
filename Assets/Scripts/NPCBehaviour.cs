@@ -14,7 +14,7 @@ public class NPCBehaviour : MonoBehaviour
     public bool avoidsFalling;
     public bool hostile;
 
-    public PlayerMovementController.Power powerOnContact;
+    public Power powerOnContact;
     public int livesOnContact;
 
     public Collider2D triggerCollider;

@@ -15,11 +15,12 @@ public class EnterCastle : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            collision.gameObject.SetActive(false);
             LCM.AddTimerToScore();
-            SpriteRenderer SR = collision.gameObject.GetComponent<SpriteRenderer>();
-            SR.enabled = false;
-            PlayerMovementController PMC = collision.gameObject.GetComponent<PlayerMovementController>();
-            PMC.enabled = false;
+            //SpriteRenderer SR = collision.gameObject.GetComponent<SpriteRenderer>();
+            //SR.enabled = false;
+            //PlayerMovementController PMC = collision.gameObject.GetComponent<PlayerMovementController>();
+            //PMC.enabled = false;
             StartCoroutine(LCM.AddTimerToScore());
             // Hide player sprite and stop movement
         }
