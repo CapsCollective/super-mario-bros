@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4873443673481797079}
   - component: {fileID: 7940109074892070287}
   m_Layer: 8
-  m_Name: Red Mushroom
+  m_Name: Powerup
   m_TagString: Green Mushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 1753205982242350755, guid: 07ec58d045cf3524b875255ce5d1e26e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
