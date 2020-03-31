@@ -12,6 +12,8 @@ public class PlayerMovementController : MonoBehaviour
     // 1 = Right
     // -1 = Left
     public static float AutoMoveDir = 1;
+    
+    public Power activePowerup = Power.None;
 
     [SerializeField] private Animator animator;
     [Space]
