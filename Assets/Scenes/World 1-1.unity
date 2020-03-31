@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 3175725942094931219, guid: a8b2916e9ed7fe94d97048093543c32d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8b2916e9ed7fe94d97048093543c32d, type: 3}
@@ -8846,7 +8846,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 5378844898301735834, guid: cf62959aae105ab4b8c87f3536705f3d,
+      objectReference: {fileID: 4873443673481797075, guid: 0d16ffe5017b31c44913d0642a08aa89,
         type: 3}
     - target: {fileID: 2817589012992735298, guid: e884cefe2a7c0e349a771838820163d4,
         type: 3}
@@ -9062,7 +9062,7 @@ PrefabInstance:
     - target: {fileID: 66683224457261565, guid: 0f32ff1d1eb243142befc9c3f3fc3e8c,
         type: 3}
       propertyPath: m_Name
-      value: Fireworks (1)
+      value: Fireworks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f32ff1d1eb243142befc9c3f3fc3e8c, type: 3}
@@ -9146,7 +9146,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 5378844898301735834, guid: cf62959aae105ab4b8c87f3536705f3d,
+      objectReference: {fileID: 4873443673481797075, guid: 0d16ffe5017b31c44913d0642a08aa89,
         type: 3}
     - target: {fileID: 2817589012992735298, guid: e884cefe2a7c0e349a771838820163d4,
         type: 3}
@@ -10350,7 +10350,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 5378844898301735834, guid: 61fa41315969cab43900dfb9b6b9aeda,
+      objectReference: {fileID: 2218598277776999214, guid: 0b23c7688d5d96b4fbf43d6e78a11b7e,
         type: 3}
     - target: {fileID: 919510316188203737, guid: e884cefe2a7c0e349a771838820163d4,
         type: 3}
@@ -11137,7 +11137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 5378844898301735834, guid: cf62959aae105ab4b8c87f3536705f3d,
+      objectReference: {fileID: 4873443673481797075, guid: 0d16ffe5017b31c44913d0642a08aa89,
         type: 3}
     - target: {fileID: 2817589012992735298, guid: e884cefe2a7c0e349a771838820163d4,
         type: 3}
