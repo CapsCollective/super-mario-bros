@@ -101,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2428316749852858194}
   walkSpeed: 0.15
-  jumpMultiplier: 0.25
+  runSpeed: 0.225
+  jumpMultiplier: 0.2
   jumpSpeed: 5
   groundOffset: -0.55
   groundDistance: 0.02
