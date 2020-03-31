@@ -20,6 +20,7 @@ public class LowerFlag : MonoBehaviour
 
     public void Lower()
     {
+        SoundGuy.Instance.PlaySound("", true);
         SoundGuy.Instance.PlaySound("smb_flagpole");
 
         StartCoroutine(LerpFlag());

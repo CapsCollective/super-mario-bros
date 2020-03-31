@@ -75,6 +75,7 @@ public class LevelCompleteManager : MonoBehaviour
 
     public IEnumerator AddTimerToScore()
     {
+        SoundGuy.Instance.PlaySound("timer_decrease", true);
         while (GC.TM.IsTimeRemaining())
         {
             float timeAmount = Time.deltaTime * timeDecreaseRate;
@@ -84,13 +85,11 @@ public class LevelCompleteManager : MonoBehaviour
             {
                 GC.SM.AddPoints(50 * Mathf.FloorToInt(timerPoint));
                 timerPoint -= Mathf.Floor(timerPoint);
-                
-                //TODO: Timer countdown sound
-
             }
 
             yield return null;
         }
+        SoundGuy.Instance.PlaySound("", true);
         FireWorks();
     }
 
